@@ -1,0 +1,20 @@
+<div class="container">
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.nom }}</td>
+            <td>{{ user.prenom }}</td>
+            <td class="td-btn"><button mat-raised-button (click)="onClick(user)" class="btn" [ngClass]="[checkStatus(user)]"> {{ user.state }}</button></td>
+          </tr>
+        </tbody>
+      </table>
+</div>

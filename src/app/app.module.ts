@@ -6,10 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AppInterceptor } from './interceptors/app-interceptor';
-import { AppGuard } from './guards/is_authentificated';
-import { IsAdmin } from './guards/is_admin';
 import { SessionService } from './services';
+import { SharedModule } from './modules/shared/shared.module';
+import { DataTablesModule } from 'angular-datatables';
 
 
 @NgModule({
@@ -18,17 +17,16 @@ import { SessionService } from './services';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    CommonModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule,
+    DataTablesModule
   ],
-  providers: [AppGuard, IsAdmin, SessionService,  {
-    provide: HTTP_INTERCEPTORS,
-    useClass: AppInterceptor,
-    multi: true
-  } ],
-  bootstrap: [AppComponent]
+  providers: [SessionService],
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }

@@ -1,0 +1,20 @@
+<mat-nav-list>
+    <button mat-list-item class="dropdown-btn" (click)="menu(0)">Utilisateurs
+        <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+        <a mat-list-item [routerLink]="['/admin_home_elith_rh/user_list']" routerLinkActive="active current" class="sous-menu">
+            Liste utilisateur
+        </a>
+        <a mat-list-item [routerLink]="['/admin_home_elith_rh/user_add']" routerLinkActive="active" class="sous-menu">Ajouter</a>
+    </div>
+
+    <button mat-list-item class="dropdown-btn" (click)="menu(1)">Posts
+        <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+        <a mat-list-item [routerLink]="['/admin_home_elith_rh/post_list']" routerLinkActive="active current" class="sous-menu">Liste des posts</a>
+        <a mat-list-item [routerLink]="['/admin_home_elith_rh/post_add']" routerLinkActive="active" class="sous-menu">Ajouter</a>
+    </div>
+
+</mat-nav-list>

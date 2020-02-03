@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="filter">
+        <label for="title"> Title: 
+            <input ngModel type="text" name="titre" class="input" [(ngModel)]="title" placeholder="Titre">
+        </label>
+        <label for="date"> Date: 
+            <input ngModel type="date" data-date-format="DD/MMMM/YYYY" name="date" class="input" [(ngModel)]="date">
+        </label>
+
+        <label for="other"> Other: 
+            <select ngModel name="other" class="input" [(ngModel)]="other" aria-placeholder="Selectionner">
+                <option value="today">Today</option>
+                <option value="week">This week</option>
+                <option value="month">This month</option>
+            </select>
+        </label>
+
+    </div>
+    <ul class="list">
+        <li *ngFor="let post of posts | paginate:{itemsPerPage: 5, currentPage: p} | filterPost: title | filterDate: date | filterOther: other" class="list-item" (click)="onClick(i)">
+            <div class="row">
+                <h1 class="column">{{ post.titre }}</h1> 
+                <div class="column">
+                    <p class="num" hidden>&#8470;</p>
+                    <img src="../../../../../assets/images/trash.png" class="btn-delete btn num" />
+                    <a ><img src="../../../../../assets/images/edit.png" class="btn-edit btn num"/></a>
+                    <a ><img src="../../../../../assets/images/eye.png" class="btn num"/></a>
+                </div>
+            </div>
+            
+            <p> {{ post.description }}</p>
+
+            <div class="divider"></div>
+            <div class="row">
+                <div class="column">Nombre de participant </div>
+                <div class="column">
+                    <div class="num">
+                        {{ post.date | date: 'dd MMM yyyy'}}
+                    </div>
+                </div>
+            </div>
+
+        </li>
+    </ul>
+    <div class="pagination">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>
+

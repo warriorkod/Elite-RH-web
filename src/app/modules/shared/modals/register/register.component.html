@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Créer un compte</h2>
+<form action="" [formGroup]="register"  (ngSubmit)="createUser(register.value)">
+    <mat-dialog-content >
+        <!-- Form fields -->
+        <mat-form-field>
+            <input  matInput  placeholder="Prenom" type="text" formControlName="prenom"  required>
+        </mat-form-field>
+        <mat-form-field>
+            <input  matInput  placeholder="Nom" type="text" formControlName="nom"  required>
+        </mat-form-field>
+        <mat-form-field>
+            <input  matInput  placeholder="Adresse email" type="email" formControlName="email"  required>
+        </mat-form-field>
+        <mat-form-field>
+            <input  matInput  placeholder="Mot de passe" type="password"  formControlName="password"  required>
+        </mat-form-field>
+        <mat-form-field>
+            <input  matInput  placeholder="Confirmation mot de passe"  type="password"  formControlName="password_confirm"  required>
+        </mat-form-field>
+        <mat-form-field>
+            <input  matInput  placeholder="Date de naissance" type="date" formControlName="date_naissance"  required>
+        </mat-form-field> 
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button class="mat-raised-button"(click)="close()">Close</button>
+        <button class="mat-raised-button mat-primary" type="submit">Créer</button>
+    </mat-dialog-actions> 
+</form>
+
+
+
+    
