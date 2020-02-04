@@ -11,6 +11,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LoginComponent } from './modals/login/login.component';
 import { Routes, RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 const routes: Routes = [];
 @NgModule({
@@ -24,11 +26,13 @@ const routes: Routes = [];
     MatButtonModule, 
     MatCardModule,
     MatFormFieldModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    NgbModule
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
+    NgbModule
   ],
   entryComponents: [RegisterComponent, LoginComponent]
 

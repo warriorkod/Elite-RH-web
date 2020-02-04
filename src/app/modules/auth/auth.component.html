@@ -4,7 +4,45 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6 px-0">
-                <div class="banner-bg"></div>
+                <div class="banner-bg">
+                    <ngb-carousel 
+                    [showNavigationArrows]="true" 
+                    [showNavigationIndicators]="false"
+                    interval="3000"
+                    [keyboard]="true"
+                    [pauseOnHover]="true"
+                    [wrap]="true"
+                    [activeId]="'secondSlide'"
+                    >
+                        <ng-template ngbSlide>
+                          <div class="picsum-img-wrapper">
+                            <img src="../../../assets/images/slider1.jpg" alt="Angular Carousel 1">
+                          </div>
+                          <div class="carousel-caption">
+                            <h3>Title Goes Here</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                          </div>
+                        </ng-template>
+                        <ng-template ngbSlide>
+                          <div class="picsum-img-wrapper">
+                            <img src="../../../assets/images/slider5.jpg" alt="Angular Carousel 1">
+                          </div>
+                          <div class="carousel-caption">
+                            <h3>Title Goes Here</h3>
+                            <p>Consectetur tortor volutpat pretium.</p>
+                          </div>
+                        </ng-template>
+                        <ng-template ngbSlide>
+                            <div class="picsum-img-wrapper">
+                              <img src="../../../assets/images/slider4.jpg" alt="Angular Carousel 1">
+                            </div>
+                            <div class="carousel-caption">
+                              <h3>Title Goes Here</h3>
+                              <p>Consectetur tortor volutpat pretium.</p>
+                            </div>
+                        </ng-template>
+                      </ngb-carousel>
+                </div>
             </div>
             <div class="col-lg-6 align-self-center">
                 <div class="banner-text">
