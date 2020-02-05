@@ -44,6 +44,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  open_nav(){
+    $('.main-menu ul').slideToggle(500);
+  }
+
   navigationInterceptor(event: RouterEvent): void {
     if (event instanceof NavigationEnd) {
       if (event.url.includes('/sign_in')){
