@@ -11,6 +11,7 @@ import { SharedModule } from './modules/shared/shared.module';
 import { DataTablesModule } from 'angular-datatables';
 
 
+
 @NgModule({
   declarations: [
     AppComponent

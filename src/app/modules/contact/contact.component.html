@@ -42,16 +42,16 @@
             </div>
         </div>
         <div class="col-lg-9">
-            <form action="#">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div class="left">
-                    <input type="text" placeholder="Saisissez votre nom" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Saisissez votre nom'" required>
-                    <input type="email" placeholder="Saisissez votre email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Saisissez votre email'" required>
-                    <input type="text" placeholder="Saisissez l'objet de votre email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'objet de votre email'" required>
+                    <input formControlName="name" type="text" placeholder="Saisissez votre nom" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Saisissez votre nom'" required>
+                    <input formControlName="email" type="email" placeholder="Saisissez votre email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Saisissez votre email'" required>
+                    <input formControlName="message" type="text" placeholder="Saisissez l'objet de votre email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'objet de votre email'" required>
                 </div>
                 <div class="right">
                     <textarea name="message" cols="20" rows="7"  placeholder="Saisissez votre message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Saisissez votre message'" required></textarea>
                 </div>
-                <button type="submit" class="template-btn">Envoyer maintenant</button>
+                <button [disabled]="form.invalid" type="submit" class="template-btn">Envoyer maintenant</button>
             </form>
         </div>
     </div>

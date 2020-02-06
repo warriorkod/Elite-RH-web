@@ -4,7 +4,17 @@
 
 export const environment = {
   production: false,
-  SRV_URL_TEST: ''
+  SRV_URL_TEST: '',
+  firebaseConfig: {
+    apiKey: "AIzaSyA_cRSuelQ79erlO-ykN_1C83TOKo9bP_8",
+    authDomain: "eliterh-1d34c.firebaseapp.com",
+    databaseURL: "https://eliterh-1d34c.firebaseio.com",
+    projectId: "eliterh-1d34c",
+    storageBucket: "eliterh-1d34c.appspot.com",
+    messagingSenderId: "888220700077",
+    appId: "1:888220700077:web:6b9e9220014654a79f6524",
+    measurementId: "G-3N5NGBS5QR"
+  }
 };
 
 /*
