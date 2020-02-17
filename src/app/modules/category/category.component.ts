@@ -1,0 +1,31 @@
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterEvent, NavigationEnd } from '@angular/router';
+
+@Component({
+  selector: 'app-category',
+  templateUrl: './category.component.html',
+  styleUrls: ['./category.component.css']
+})
+export class CategoryComponent implements OnInit {
+  show: boolean = true;
+
+  constructor(private router: Router) { 
+    router.events.subscribe((event: RouterEvent) => {
+      this.navigationInterceptor(event);
+    });
+  }
+
+  navigationInterceptor(event: RouterEvent) {
+    if (event instanceof NavigationEnd) {
+      if (event.url.includes('/list-job')){
+          this.show = true;
+      }else if (event.url.includes('/single-job')){
+        this.show = false;
+      }
+    }
+  }
+
+  ngOnInit() {
+  }
+
+}

@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
   contact: boolean;
   about: boolean;
   services: boolean;
+  job: boolean;
   headerInfo = {
     'about':{
       'titre': 'A propos de nous',
@@ -30,6 +31,10 @@ export class HeaderComponent implements OnInit {
     },
     'services':{
       'titre': 'Nos services',
+      'description': 'There spirit beginning bearing the open at own every give appear in third you sawe two boys'
+    },
+    'job':{
+      'titre': 'Nos offres d'+"'"+'empoi',
       'description': 'There spirit beginning bearing the open at own every give appear in third you sawe two boys'
     },
     
@@ -69,6 +74,12 @@ export class HeaderComponent implements OnInit {
           this.about = false;
           this.contact = false;
           this.info = this.headerInfo.services
+        }else if (event.url.includes('/job')){
+          this.services = false;
+          this.about = false;
+          this.contact = false;
+          this.job = true;
+          this.info = this.headerInfo.job;
         }else{
           this.main = true;
         }

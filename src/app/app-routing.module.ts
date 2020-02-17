@@ -25,6 +25,10 @@ export const routes: Routes = [
     loadChildren: () => import('./modules/allservices/allservices.module').then(mod => mod.AllservicesModule)
   },
   {
+    path: 'job',
+    loadChildren: () => import('./modules/category/category.module').then(mod => mod.CategoryModule)
+  },
+  {
     path: 'admin_elith_rh',
     loadChildren: () => import('./modules/admin/admin-auth/admin-auth.module').then(mod => mod.AdminAuthModule)
   },

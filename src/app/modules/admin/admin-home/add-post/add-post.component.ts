@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 
@@ -10,59 +11,29 @@ import { Router } from '@angular/router';
 })
 export class AddPostComponent implements OnInit {
   
-  jsonPost = {
-    titre: "",
-    description: "",
-    date: "",
-  }
+  addForm: FormGroup;
+  submitted = false;
 
-  exampleJsonObject = 
-  {
-    first_name: "Jane", 
-    last_name: "Doe",
-    age: 25,
-    is_company: false,
-    address: {
-      street_1: "123 Main St.",
-      street_2: null,
-      city: "Las Vegas", 
-      state: "NV", 
-      zip_code: "89123"
-    },
-    phone_numbers: [
-      { number: "702-123-4567",
-        type: "cell"
-      },
-      {
-        number: "702-987-6543",
-        type: "work" 
-      }
-    ],
-    notes: ""
-  };
-
-  router : Router;
-
-  constructor(private _postService : PostService, router: Router) {
-    this.router = router;
+  constructor(private _postService : PostService, private router: Router,  private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
+    this.buildAddPostForm();
   }
 
-  setJsonForm(){
-    
+  buildAddPostForm(){
+    this.addForm = this.formBuilder.group({
+      titre: ['', Validators.required],
+      description: ['', Validators.required],
+      date: ['', Validators.required]
+    });
   }
-  
 
-  addPost(event){
+  addPost(post){
     console.log(event);
-
-    let result = this._postService.posts.push(event);
-    console.log(result);
-    if(result){
-      this.router.navigate(['/home/post/list']);
-    }
+    this._postService.posts.push(post);
+    this.router.navigate(['/admin_home_elith_rh/post_list']);
+    
   }
 
 }

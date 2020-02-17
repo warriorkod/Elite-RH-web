@@ -50,21 +50,23 @@ export class ContactComponent implements OnInit {
     this.form = this.fb.group({
       name: ['', Validators.required],
       email: ['', Validators.required],
-      message: ['', Validators.required],
+      subject: ['', Validators.required],
+      message: ['', Validators.required]
     });
   }
 
   
   onSubmit() {
-    const {name, email, message} = this.form.value;
+    const {name, email, subject, message} = this.form.value;
     const date = Date();
     const html = `
       <div>From: ${name}</div>
       <div>Email: <a href="mailto:${email}">${email}</a></div>
       <div>Date: ${date}</div>
+      <div>Subject: ${subject}</div>
       <div>Message: ${message}</div>
     `;
-    let formRequest = { name, email, message, date, html };
+    let formRequest = { name, email, subject, message, date, html };
     
     this.af.list('/messages').push(formRequest);
     this.form.reset();
