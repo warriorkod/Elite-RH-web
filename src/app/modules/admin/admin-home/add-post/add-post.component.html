@@ -1,83 +1,51 @@
-
-<!--
-<span class="titre">Ajouter une nouvelle offre d'emploi</span>
-<div class="container">
-    <form #addForm="ngForm" class="form" (ngSubmit)="addPost(addForm.value)">
-        <div class="row">
-      <div class="col-25">
-        <label for="ftitre">First Name</label>
-      </div>
-      <div class="col-75">
-        <input ngModel #titre= "ngModel" id="ftitre"
-        class="form-control input" 
-        type="text" name="titre" 
-        placeholder="Titre"
-        required/>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="ldate">Last Name</label>
-      </div>
-      <div class="col-75">
-        <input ngModel #date= "ngModel" id="fdate"
-        class="form-control input" 
-        type="date" name="date" 
-        required/>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="country">Country</label>
-      </div>
-      <div class="col-75">
-        <select id="country" name="country">
-          <option value="australia">Australia</option>
-          <option value="canada">Canada</option>
-          <option value="usa">USA</option>
+<form class="form-style-9" #addForm="ngForm" (ngSubmit)="addPost(addForm.value)">
+  <span class="titre">Publier une nouvelle offre d'emploi</span>
+  <ul>
+    <li>
+        <input type="text" name="titre" ngModel #titre="ngModel" id="ftitre" class="field-style field-split align-left" placeholder="Titre du poste" required />
+        <select name="lieu" ngModel #lieu="ngModel" id="flieu"  class="field-style field-split align-right" required>
+          <option value="">Lieu du poste</option>
+          <option value="2">Dakar</option>
+          <option value="3">Diourbel</option>
+          <option value="4">Fatick</option>
+          <option value="5">Kaffrine</option>
+          <option value="5">Kaolack</option>
+          <option value="5">Kédougou</option>
+          <option value="5">Kolda</option>
+          <option value="5">Louga</option>
+          <option value="5">Matam</option>
+          <option value="5">Saint-Louis</option>
+          <option value="5">Sédhiou</option>
+          <option value="5">Tambacounda</option>
+          <option value="5">Thiès</option>
+          <option value="5">Ziguinchor</option>
+      </select>
+    </li>
+    <li>
+        <select ngModel name="type" #type="ngModel" id="ftype"  class="field-style field-split align-left" required>
+          <option value="">Type de contrat</option>
+          <option value="2">Temps partiel</option>
+          <option value="3">Temps plein</option>
+          <option value="5">Travail de bureau</option>
+          <option value="4">Travail à distance</option>
         </select>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="subject">Subject</label>
-      </div>
-      <div class="col-75">
-        <textarea rows="5" cols="5" ngModel #description= "ngModel" id="subject"
-                class="form-control input" 
-                name="description" 
-                placeholder="Saisir la description"
-                style="height:200px"
-                required></textarea>
-      </div>
-    </div>
-    <div class="row">
-      <input type="submit" value="Submit">
-    </div>
-    </form>
-  </div>
-  -->
-
-  <form class="form-style-9">
-      <span class="titre">Publier une nouvelle offre d'emploi</span>
-    <ul>
-    <li>
-        <input type="text" name="field1" class="field-style field-split align-left" placeholder="Name" />
-        <input type="email" name="field2" class="field-style field-split align-right" placeholder="Email" />
-    
+        <select name="categorie" ngModel #categorie="ngModel" id="fcategorie"  class="field-style field-split align-right" required>
+          <option value="">Catégorie poste</option>
+          <option value="2">Cadre</option>
+          <option value="3">Non cadre</option>
+        </select> 
     </li>
     <li>
-        <input type="text" name="field3" class="field-style field-split align-left" placeholder="Phone" />
-        <input type="url" name="field4" class="field-style field-split align-right" placeholder="Website" />
+      <input type="date" name="date_val" ngModel #date_val="ngModel" id="fdate_val" class="field-style field-full align-none" placeholder="Date de validation" required/>
     </li>
     <li>
-    <input type="text" name="field3" class="field-style field-full align-none" placeholder="Subject" />
+      <textarea name="fiche" ngModel #fiche="ngModel" id="ffiche" class="field-style" placeholder="Fiche de poste" required></textarea>
     </li>
     <li>
-    <textarea name="field5" class="field-style" placeholder="Message"></textarea>
+      <textarea name="competences" ngModel #competences="ngModel" id="fcompetences" class="field-style" placeholder="Compétences" required></textarea>
     </li>
     <li>
-    <input type="submit" value="Enregistrer l'offre d'emploi" />
+      <input type="submit" value="Enregistrer l'offre d'emploi" />
     </li>
-    </ul>
-    </form>
+  </ul>
+</form>

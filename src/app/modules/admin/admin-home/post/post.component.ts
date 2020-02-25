@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/post.service';
+import { Subscription } from 'rxjs';
+import { Post } from 'src/app/models/post';
+import { SessionService } from 'src/app/services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -8,30 +12,34 @@ import { PostService } from '../../services/post.service';
 })
 export class PostComponent implements OnInit {
 
-  posts = [];
+  post = [];
   p = 1;
+  postsSubscription: Subscription;
+  posts: Post[];
 
 
-  constructor(private _postService : PostService) { }
+
+  constructor(private _postService : PostService, private _apiservice : SessionService, private router: Router) { }
 
   ngOnInit() {
-      this.posts = this._postService.getPosts();
+      this.post = this._postService.getPosts();
+      this.postsSubscription = this._apiservice.postsSubject.subscribe(
+        (posts: Post[]) => {
+          this.posts = posts;
+        }
+      );
+      this._apiservice.emitPosts();
+  }
+ 
+  onDeleteBook(post: Post) {
+    this._apiservice.removePosts(post);
   }
 
-  onClick(index){
-    console.log(index);
+  onViewPost(id: number) {
+    this.router.navigate(['/post', 'view', id]);
   }
-
-  filter(type, value){
-    console.log(value);
-
-    switch(type) {
-      case("title"):{
-        
-      }
-      case("date"):{
-
-      }
-    }
+  
+  ngOnDestroy() {
+    this.postsSubscription.unsubscribe();
   }
 }

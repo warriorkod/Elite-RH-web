@@ -18,7 +18,6 @@ import { PostService } from '../services/post.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MaterialDesignFrameworkModule } from 'angular6-json-schema-form';
 import { FilterPostPipe } from '../pipes/filter-post.pipe';
-import { ListMissionComponent } from './list-mission/list-mission.component';
 import { AddMissionComponent } from './add-mission/add-mission.component';
 import { FilterDatePipe } from '../pipes/filter-date.pipe';
 import { FilterOtherPipe } from '../pipes/filter-other.pipe';
@@ -34,8 +33,7 @@ import { AdminHomeRoutingModule } from './admin-home-routing.module';
     AddUserComponent, 
     PostComponent, 
     AddPostComponent, 
-    FilterPostPipe, FilterDatePipe, FilterOtherPipe,
-    ListMissionComponent, AddMissionComponent, ],
+    FilterPostPipe, FilterDatePipe, FilterOtherPipe, AddMissionComponent, ],
   entryComponents: [DialogComponent],
   imports: [
     CommonModule,

@@ -17,7 +17,7 @@
 
     </div>
     <ul class="list">
-        <li *ngFor="let post of posts | paginate:{itemsPerPage: 5, currentPage: p} | filterPost: title | filterDate: date | filterOther: other" class="list-item" (click)="onClick(i)">
+        <li *ngFor="let post of post | paginate:{itemsPerPage: 5, currentPage: p} | filterPost: title | filterDate: date | filterOther: other" class="list-item" (click)="onClick(i)">
             <div class="row">
                 <h1 class="column">{{ post.titre }}</h1> 
                 <div class="column">

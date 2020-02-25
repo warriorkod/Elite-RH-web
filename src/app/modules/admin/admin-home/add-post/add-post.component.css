@@ -1,11 +1,11 @@
 .form-style-9{
-	max-width: 950px;
+	max-width: 1200px;
 	background: #FAFAFA;
 	padding: 30px;
 	margin: 50px auto;
-	box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
+	/*box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);*/
 	border-radius: 10px;
-	border: 6px solid black;
+	/*border: 6px solid black;*/
 }
 .form-style-9 .titre{
     width: 100%;
@@ -46,6 +46,12 @@
 	float:left;
 }
 .form-style-9 ul li input.align-right{
+	float:right;
+}
+.form-style-9 ul li select.align-left{
+	float:left;
+}
+.form-style-9 ul li select.align-right{
 	float:right;
 }
 .form-style-9 ul li textarea{
