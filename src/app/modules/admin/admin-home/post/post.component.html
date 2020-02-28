@@ -1,4 +1,4 @@
-<div class="container">
+<div class="content-all">
     <div class="filter">
         <label for="title"> Title: 
             <input ngModel type="text" name="titre" class="input" [(ngModel)]="title" placeholder="Titre">
@@ -14,36 +14,40 @@
                 <option value="month">This month</option>
             </select>
         </label>
-
     </div>
-    <ul class="list">
-        <li *ngFor="let post of post | paginate:{itemsPerPage: 5, currentPage: p} | filterPost: title | filterDate: date | filterOther: other" class="list-item" (click)="onClick(i)">
-            <div class="row">
-                <h1 class="column">{{ post.titre }}</h1> 
-                <div class="column">
-                    <p class="num" hidden>&#8470;</p>
-                    <img src="../../../../../assets/images/admin/trash.png" class="btn-delete btn num" />
-                    <a ><img src="../../../../../assets/images/admin/edit.png" class="btn-edit btn num"/></a>
-                    <a ><img src="../../../../../assets/images/admin/eye.png" class="btn num"/></a>
-                </div>
-            </div>
-            
-            <p> {{ post.description }}</p>
-
-            <div class="divider"></div>
-            <div class="row">
-                <div class="column">Nombre de participant </div>
-                <div class="column">
-                    <div class="num">
-                        {{ post.date | date: 'dd MMM yyyy'}}
+    <div class="content-body">
+        <ul class="list">
+            <!-- <li *ngFor="let post of post | paginate:{itemsPerPage: 8, currentPage: p} | filterPost: title | filterDate: date | filterOther: other" class="list-item" (click)="openPost(post)">-->
+             <li *ngFor="let post of posts | paginate:{itemsPerPage: 8, currentPage: p}" class="list-item" (click)="openPost(post)">
+                 <div>
+                    <div class="row">
+                        <h4 class="card-header">{{ post.titre }}</h4> 
                     </div>
-                </div>
-            </div>
-
-        </li>
-    </ul>
+                    <div class="card-body">
+                        <p> {{ post.lieu }}</p>
+                    </div>        
+                    <div class="divider"></div>
+                    <div class="row">
+                        <div class="column">
+                            <div class="num">
+                                {{ post.date_val | date: 'dd MMM yyyy'}}
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+             </li>
+         </ul>
+    </div>
     <div class="pagination">
         <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
 </div>
 
+
+<!--
+<div class="column">
+    <p class="num" hidden>&#8470;</p>
+    <a><img src="../../../../../assets/images/admin/trash.png" class="btn-delete btn num" ></a>
+    <a ><img src="../../../../../assets/images/admin/edit.png" class="btn-edit btn num"></a>
+    <a ><img src="../../../../../assets/images/admin/eye.png" class="btn num"></a>
+</div>-->

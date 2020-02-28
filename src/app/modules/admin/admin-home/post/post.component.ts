@@ -11,24 +11,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-
-  post = [];
   p = 1;
   postsSubscription: Subscription;
   posts: Post[];
 
 
 
-  constructor(private _postService : PostService, private _apiservice : SessionService, private router: Router) { }
+  constructor( private _apiservice : SessionService, private router: Router) { }
 
   ngOnInit() {
-      this.post = this._postService.getPosts();
       this.postsSubscription = this._apiservice.postsSubject.subscribe(
         (posts: Post[]) => {
           this.posts = posts;
+          console.log(this.posts);
         }
       );
       this._apiservice.emitPosts();
+  }
+
+  openPOst(post){
+    this.router.navigate(['/post', 'view', post.id]);
   }
  
   onDeleteBook(post: Post) {

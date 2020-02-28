@@ -35,10 +35,11 @@ export class SessionService {
 
   //get all posts
   getAllPost(){
-    firebase.database().ref('/posts')
-    .on('value', (data: Datasnapshot) => {
+    firebase.database().ref('/posts').on('value', (data: Datasnapshot) => {
         this.posts = data.val() ? data.val() : [];
         this.emitPosts();
+        console.log('papahoho')
+        console.log(this.posts);  
       }
     );
   }
