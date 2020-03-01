@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class PostComponent implements OnInit {
   p = 1;
   postsSubscription: Subscription;
-  posts: Post[];
+  posts: Post[] = [];
 
 
 

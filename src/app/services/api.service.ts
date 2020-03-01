@@ -29,6 +29,7 @@ export class SessionService {
     this.emitPosts();
   }
 
+  //save a post
   savePosts(){
     firebase.database().ref('/posts').set(this.posts);
   }
@@ -38,32 +39,45 @@ export class SessionService {
     firebase.database().ref('/posts').on('value', (data: Datasnapshot) => {
         this.posts = data.val() ? data.val() : [];
         this.emitPosts();
-        console.log('papahoho')
-        console.log(this.posts);  
       }
     );
   }
 
-  //remove a post
-  removePosts(post: Post) {
-    const bookIndexToRemove = this.posts.findIndex(
-      (bookEl) => {
-        if(bookEl === post) {
+  //update a post
+  updatePost(post: Post){
+    const postIndexToUpdate = this.posts.findIndex(
+      (postEl) => {
+        if(postEl.id === post.id) {
           return true;
         }
       }
     );
-    this.posts.splice(bookIndexToRemove, 1);
+    this.posts[postIndexToUpdate] = post;
+    this.savePosts();
+    this.emitPosts();
+  }
+
+  //remove a post
+  removePosts(post: Post) {
+    const postIndexToRemove = this.posts.findIndex(
+      (postEl) => {
+        if(postEl === post) {
+          return true;
+        }
+      }
+    );
+    this.posts.splice(postIndexToRemove, 1);
     this.savePosts();
     this.emitPosts();
   }
 
   //get a single post
-  getSinglePost(id: number) {
+  getSinglePost(id: string) {
     return new Promise(
       (resolve, reject) => {
         firebase.database().ref('/posts/' + id).once('value').then(
           (data: Datasnapshot) => {
+            console.log(data.val())
             resolve(data.val());
           }, (error) => {
             reject(error);

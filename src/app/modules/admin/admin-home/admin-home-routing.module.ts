@@ -9,8 +9,11 @@ const routes: Routes = [
   { path: 'user_add', component: AdminHomeComponent },
   { path: 'user_list', component: AdminHomeComponent },
   { path: 'post_list', component: AdminHomeComponent },
-  { path: 'post_add', component: AdminHomeComponent }
+  { path: 'post_add', component: AdminHomeComponent },
+  { path: 'single_post/:id', component: AdminHomeComponent }
+
 ];
+
 
 
 @NgModule({

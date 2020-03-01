@@ -44,8 +44,12 @@
     width: 100%;
 }
 
-.num{
+.date{
     float: right;
+    font-weight: lighter;
+}
+.lieu{
+    float: left;
     font-weight: lighter;
 }
 

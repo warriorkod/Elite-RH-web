@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SessionService } from 'src/app/services';
 import { Post } from 'src/app/models/post';
-import { Subscription } from 'rxjs';
+import { Subscription, from } from 'rxjs';
 
 
 @Component({
@@ -39,7 +39,8 @@ export class AddPostComponent implements OnInit {
       categorie: ['', Validators.required],
       fiche: ['', Validators.required],
       competences: ['', Validators.required],
-      date_val: ['', Validators.required]
+      date_val: ['', Validators.required],
+      structure_name: ['', Validators.required]
     });
   }
 
@@ -49,10 +50,12 @@ export class AddPostComponent implements OnInit {
     post.lieu = object.lieu;
     post.type = object.type;
     post.categorie = object.categorie;
+    post.date_create = ''+new Date();
+    console.log(post.date_create)
     post.date_val = object.date_val;
     post.fiche = object.fiche;
     post.competences = object.competences;
-    console.log(post);
+    post.structure_name = object.structure_name;
     this._apiservice.createNewPost(post);
     this.router.navigate(['/admin_home_elith_rh/post_list']);
     

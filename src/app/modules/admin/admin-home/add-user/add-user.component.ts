@@ -12,14 +12,11 @@ export class AddUserComponent implements OnInit {
 
   users = [];
   user = {};
-  router : Router;
 
   addForm: FormGroup;
   submitted = false;
 
-  constructor(private _userService : UserService, 
-    router: Router, private formBuilder: FormBuilder) {
-    this.router = router;
+  constructor(private _userService : UserService, private router: Router, private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {

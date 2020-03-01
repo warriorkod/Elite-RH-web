@@ -36,7 +36,11 @@
         </select> 
     </li>
     <li>
+      <!--
       <input type="date" name="date_val" ngModel #date_val="ngModel" id="fdate_val" class="field-style field-full align-none" placeholder="Date de validation" required/>
+      -->
+      <input type="text" name="structure_name" ngModel #structure_name="ngModel" id="fstructure_name" class="field-style field-split align-left" placeholder="Nom de la structure" required />
+      <input type="date" name="date_val" ngModel #date_val="ngModel" id="fdate_val" class="field-style field-split align-right" placeholder="Date de validation" required/>
     </li>
     <li>
       <textarea name="fiche" ngModel #fiche="ngModel" id="ffiche" class="field-style" placeholder="Fiche de poste" required></textarea>

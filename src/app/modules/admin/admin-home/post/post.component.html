@@ -18,18 +18,23 @@
     <div class="content-body">
         <ul class="list">
             <!-- <li *ngFor="let post of post | paginate:{itemsPerPage: 8, currentPage: p} | filterPost: title | filterDate: date | filterOther: other" class="list-item" (click)="openPost(post)">-->
-             <li *ngFor="let post of posts | paginate:{itemsPerPage: 8, currentPage: p}" class="list-item" (click)="openPost(post)">
+             <li [routerLink]="['/admin_home_elith_rh/single_post', i]" *ngFor="let post of posts| paginate:{itemsPerPage: 8, currentPage: p} ;let i = index " class="list-item">
                  <div>
                     <div class="row">
-                        <h4 class="card-header">{{ post.titre }}</h4> 
+                        <h4 class="card-header">{{ post.structure_name }}</h4> 
                     </div>
                     <div class="card-body">
-                        <p> {{ post.lieu }}</p>
+                        <p> {{ post.titre }}</p>
                     </div>        
                     <div class="divider"></div>
                     <div class="row">
                         <div class="column">
-                            <div class="num">
+                            <div class="lieu">
+                                {{ post.lieu}}
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="date">
                                 {{ post.date_val | date: 'dd MMM yyyy'}}
                             </div>
                         </div>

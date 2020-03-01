@@ -12,33 +12,24 @@ import { DatePipe } from '@angular/common';
 export class AdminHomeComponent implements OnInit {
 
 
-  activeRouter: ActivatedRoute;
-  router : Router;
+
 
   addUser = false;
-  listUser= true;
-  addPost = false;
+  listUser= false;
+  addPost = true;
   listPost = false;
   addMission = false;
   listMission = false;
-
+  singlePost = false;
   route;
 
-  constructor(activeRouter : ActivatedRoute, router: Router) {
-    this.activeRouter = activeRouter;
-    this.router = router;
-    console.log('papa')
+
+  constructor(private activeRouter : ActivatedRoute, private router: ActivatedRoute) {
   }
 
   ngOnInit() {
-    // if(localStorage.getItem('token')===""){
-    //   this.router.navigate(['/login']);
-    //   return;
-    // }
-
     this.activeRouter.url.subscribe(value => {
       this.route = value;
-      console.log(this.route);
       if(value.length > 0)
         this.checkRoute();  
     })
@@ -52,17 +43,13 @@ export class AdminHomeComponent implements OnInit {
         this.listUser= false;
         this.addPost = false;
         this.listPost = false;
-        this.addMission = false;
-        this.listMission = false;
         break;
       }
       case "user_list" : {
         this.addUser= false;
           this.listUser= true;
           this.addPost = false;
-          this.listPost = false;
-          this.addMission = false;
-          this.listMission = false;        
+          this.listPost = false;    
         break;
       }
       case "post_add" : {
@@ -70,19 +57,23 @@ export class AdminHomeComponent implements OnInit {
           this.listPost= false;
           this.addUser = false;
           this.listUser = false;
-          this.addMission = false;
-          this.listMission = false;
           break;
       }
       case "post_list" : {
           this.addPost= false;
           this.listPost= true;
           this.addUser = false;
-          this.listUser = false;
-          this.addMission = false;
-          this.listMission = false;  
+          this.listUser = false; 
         break;
       }
+      case "single_post" : {
+        this.singlePost = true;
+        this.addPost= false;
+        this.listPost= false;
+        this.addUser = false;
+        this.listUser = false; 
+      break;
+    }
     }
    
   }

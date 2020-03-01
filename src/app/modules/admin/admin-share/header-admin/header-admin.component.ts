@@ -20,7 +20,6 @@ export class HeaderAdminComponent implements OnInit {
   ngOnInit() {
     this.activeRouter.paramMap.subscribe(params => {
       this.email = params.get('email')
-      console.log(this.email);
     });
   }
 

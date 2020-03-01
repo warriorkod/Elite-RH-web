@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddMissionComponent } from './add-mission.component';
+import { ViewSingleJobComponent } from './view-single-job.component';
 
-describe('AddMissionComponent', () => {
-  let component: AddMissionComponent;
-  let fixture: ComponentFixture<AddMissionComponent>;
+describe('ViewSingleJobComponent', () => {
+  let component: ViewSingleJobComponent;
+  let fixture: ComponentFixture<ViewSingleJobComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddMissionComponent ]
+      declarations: [ ViewSingleJobComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddMissionComponent);
+    fixture = TestBed.createComponent(ViewSingleJobComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
