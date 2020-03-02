@@ -80,3 +80,18 @@
 	background: linear-gradient(to bottom, #2D77A2 5%, #337DA8 100%);
 	background-color: #28739E;
 }
+
+
+.form-style-9 ul li .date::-webkit-clear-button {
+	font-size: 18px;
+	height: 30px;
+	position: relative;
+  }
+  
+.form-style-9 ul li .date::-webkit-inner-spin-button {
+	height: 28px;
+  }
+  
+.form-style-9 ul li  .date::-webkit-calendar-picker-indicator {
+	font-size: 25px;	
+}

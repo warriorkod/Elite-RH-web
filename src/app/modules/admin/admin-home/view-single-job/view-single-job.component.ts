@@ -3,7 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SessionService } from 'src/app/services';
 import { Post } from 'src/app/models/post';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import {formatDate} from '@angular/common';
+
 
 
 
@@ -17,6 +19,8 @@ export class ViewSingleJobComponent implements OnInit {
   post: Post = new Post();
   show = true;
   addForm: FormGroup;
+  minDate = formatDate(new Date(), 'yyyy-MM-dd', 'en'); 
+
 
 
   constructor(private apiservice: SessionService, private router: ActivatedRoute, private route: Router) { 
@@ -45,7 +49,8 @@ export class ViewSingleJobComponent implements OnInit {
       fiche: new FormControl (this.post.fiche, Validators.required),
       competences: new FormControl (this.post.competences, Validators.required),
       date_val: new FormControl (this.post.date_val, Validators.required),
-      structure_name: new FormControl (this.post.structure_name, Validators.required)
+      structure_name: new FormControl (this.post.structure_name, Validators.required),
+      secteur: new FormControl (this.post.secteur, Validators.required)
     });
   }
 

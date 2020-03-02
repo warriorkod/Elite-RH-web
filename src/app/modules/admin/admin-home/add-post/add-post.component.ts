@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { SessionService } from 'src/app/services';
 import { Post } from 'src/app/models/post';
 import { Subscription, from } from 'rxjs';
+import {formatDate} from '@angular/common';
+
 
 
 @Component({
@@ -17,6 +19,8 @@ export class AddPostComponent implements OnInit {
   submitted = false;
   postsSubscription: Subscription;
   posts: Post[];
+  minDate = formatDate(new Date(), 'yyyy-MM-dd', 'en'); 
+
 
   constructor(private _apiservice : SessionService, private router: Router,  private formBuilder: FormBuilder) {
   }
@@ -40,7 +44,9 @@ export class AddPostComponent implements OnInit {
       fiche: ['', Validators.required],
       competences: ['', Validators.required],
       date_val: ['', Validators.required],
-      structure_name: ['', Validators.required]
+      structure_name: ['', Validators.required],
+      secteur: ['', Validators.required]
+
     });
   }
 
@@ -50,12 +56,12 @@ export class AddPostComponent implements OnInit {
     post.lieu = object.lieu;
     post.type = object.type;
     post.categorie = object.categorie;
-    post.date_create = ''+new Date();
-    console.log(post.date_create)
+    post.date_create = ''+ formatDate(new Date(), 'yyyy-MM-dd', 'en');
     post.date_val = object.date_val;
     post.fiche = object.fiche;
     post.competences = object.competences;
     post.structure_name = object.structure_name;
+    post.secteur = object.secteur;
     this._apiservice.createNewPost(post);
     this.router.navigate(['/admin_home_elith_rh/post_list']);
     

@@ -5,7 +5,7 @@ import { AuthGard } from '../guards/is_authenticated';
 
 
 const routes: Routes = [
-  { path: '', component: AdminHomeComponent},
+  { path: '', redirectTo: 'post_add'},
   { path: 'user_add', component: AdminHomeComponent },
   { path: 'user_list', component: AdminHomeComponent },
   { path: 'post_list', component: AdminHomeComponent },

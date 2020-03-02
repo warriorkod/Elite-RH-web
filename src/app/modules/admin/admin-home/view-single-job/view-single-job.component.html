@@ -81,11 +81,25 @@
                                   </select> 
                               </li>
                               <li>
+                                <select formControlName="secteur" id="fsecteur"  class="field-style field-full align-none" required>
+                                  <option value="">Secteur du post</option>
+                                  <option value="Bâtiment et travaux publics">Bâtiment et travaux publics</option>
+                                  <option value="Immobilier">Immobilier</option>
+                                  <option value="Télécommunication">Télécommunication</option>
+                                  <option value="Agroalimentaire">Agroalimentaire</option>
+                                  <option value="Commerce">Commerce</option>
+                                  <option value="Industries Alimentaires">Industries Alimentaires</option>
+                                  <option value="Banques et Etablissements Financiers">Banques et Etablissements Financiers</option>
+                                  <option value="Hôtellerie">Hôtellerie</option>
+                          
+                                </select> 
+                              </li>
+                              <li>
                                 <!--
                                 <input type="date" name="date_val" ngModel #date_val="ngModel" id="fdate_val" class="field-style field-full align-none" placeholder="Date de validation" required/>
                                 -->
                                 <input type="text" formControlName="structure_name" id="fstructure_name" class="field-style field-split align-left" placeholder="Nom de la structure" required />
-                                <input type="date" formControlName="date_val" id="fdate_val" class="field-style field-split align-right" placeholder="Date de validation" required/>
+                                <input type="date" formControlName="date_val" [min]="minDate" id="fdate_val" class="field-style field-split align-right" placeholder="Date de validation" required/>
                               </li>
                               <li>
                                 <textarea formControlName="fiche" id="ffiche" class="field-style" placeholder="Fiche de poste" required></textarea>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, RouterEvent, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar-admin',
@@ -7,11 +7,25 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./sidebar-admin.component.css']
 })
 export class SidebarAdminComponent implements OnInit {
+  links = document.getElementsByClassName("btn-link");
+  
 
-  constructor(private activeRouter : ActivatedRoute) { }
+  constructor(private router : Router) { 
+  }
 
   ngOnInit() {
+    this.router.events.subscribe((event: RouterEvent) => {
+      this.navigationInterceptor(event);
+    });
+  }
 
+  navigationInterceptor(event: RouterEvent): void {
+    if (event instanceof NavigationEnd) {
+      this.links[1].classList.remove("active");
+      if (event.url.includes('/single_post/')){
+        this.links[1].classList.toggle("active");
+      }
+    }
   }
 
 

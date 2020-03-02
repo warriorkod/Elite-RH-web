@@ -16,8 +16,8 @@
     outline: none;
 }
 .btn-link:hover{
-  background-color: black;
-  color: white;
+  background-color: seashell;
+  color: black;
   font-weight: bold;
 }
 

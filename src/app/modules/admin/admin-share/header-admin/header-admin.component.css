@@ -26,12 +26,15 @@
     margin-left: 60px;
     vertical-align: auto;
     width: 50px;
+    background-color: white;
+    border-radius: 20%;
 }
 
 .btn{
     align-content: center;
     float: right;
-    height: 30px;
-    margin-top: 20px;
+    height: 50px;
+    margin-top: 5px;
     margin-right: 20px;
+    margin-bottom: 5px;
 }
