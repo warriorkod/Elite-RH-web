@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { SessionService } from 'src/app/services';
 
 @Component({
   selector: 'app-header-admin',
@@ -8,25 +8,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HeaderAdminComponent implements OnInit {
 
- 
-  activeRouter : ActivatedRoute
-  router : Router
-  email :String 
-  constructor(activerouter : ActivatedRoute, router: Router) { 
-    this.router = router,
-    this.activeRouter = activerouter
+  constructor( private apiServie: SessionService) {
+
   }
 
   ngOnInit() {
-    this.activeRouter.paramMap.subscribe(params => {
-      this.email = params.get('email')
-    });
+
   }
 
-  deconnexion(){
-    localStorage.setItem('token', "");
-    console.log("Deconnexion");
-    this.router.navigate(['/login']);
+  deconnexion() {
+    this.apiServie.signOutUser();
   }
 
 }

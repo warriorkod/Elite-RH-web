@@ -1,33 +1,26 @@
 <div class="admin-container">
-    <form #login="ngForm" class="form" (ngSubmit)="setLogin(login.value)">
-        <h2 class="title">Geode</h2>
+    <form [formGroup]="login" class="form" (ngSubmit)="onLogin(login.value)">
+        <h2 class="title">Elite RH</h2>
     
         <div class="form-group">
-            <input ngModel #email= "ngModel"
+            <input
             class="form-control input" 
-            type="email" name="email" 
+            type="email" formControlName="email" 
             placeholder="Email"
             required/>
-    
-            <div class="alert-error" *ngIf="email.touched && !email.valid">
-                <div *ngIf="!email.errors.email"> Merci de saisir un email valide</div>
-                <div *ngIf="!email.valid">Veuillez saisir une adresse mail valide</div>
-            </div>
         </div>
     
         <div class="form-group">
-            <input ngModel #password="ngModel" 
+            <input
             class="form-control input" 
-            type="password" name="password" 
+            type="password" formControlName="password" 
             placeholder="Mot de passe"
             required/>
-            
-            <div class="alert-error" *ngIf="password.touched && !password.valid">
-                Veuillez saisir un mot de passe
-            </div>
         </div>
     
-        <input class="btn input" type="submit" value="Valider"/>
+        <input  [disabled]="login.invalid" class="btn input" type="submit" value="Valider"/>
+        <p class="text-danger">{{ errorMessage }}</p>
+
     </form>
 </div>
 

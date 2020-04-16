@@ -1,16 +1,17 @@
 export class Post
 {
     id?: string;
-    titre : String;
-    lieu : String;
-    type : String;
-    categorie : String;
-    secteur : String;
+    titre: string;
+    lieu: string;
+    type: string;
+    categorie: string;
+    secteur: string;
     date_create: string;
-    date_val : String;
-    fiche : String;
-    competences : String;
-    structure_name : string;
+    date_val: string;
+    fiche: string;
+    competences: string[];
+    structure_name: string;
+    index?: number;
 
     constructor(){
         this.id = Math.random().toString(36).substring(2);

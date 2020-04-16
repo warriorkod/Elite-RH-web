@@ -9,7 +9,7 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
     letter-spacing: .1em;
     line-height: 30px;
-    
+
 }
 
 .logo-area-bis a {
@@ -19,7 +19,7 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
     letter-spacing: .1em;
     line-height: 30px;
-    
+
 }
 
 .logoelite{
@@ -27,7 +27,26 @@
     width: 152px;
 }
 
-.active{
-    color: #1a393b;
+
+
+mat-form-field{
+    width: 100%;
+    padding: 1%;
 }
 
+.mat-raised-button{
+    width: 30%;
+    height: 50px;
+}
+
+.main-menu-active{
+  color: #35a087;
+  font-size: 12px;
+  font-weight: 700;
+  bottom: 1px;
+  border-width: 0 0 2px;
+  border-style: solid;
+}
+.dark_error{
+  color: red;
+}

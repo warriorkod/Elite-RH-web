@@ -5,16 +5,14 @@
             <div class="float-left">
                 <ul class="list header_social">
                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                    <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
             </div>
             <div class="float-right">
-                <a class="dn_btn" href="tel:+221762348541">+221 76 234 85 41</a>
-                <a class="dn_btn" href="info.eliterh@gmail.com">support@colorlib.com</a>
+                <a class="dn_btn" href="tel:+221 76 460 16 16">+221 76 460 16 16</a>
+                <a class="dn_btn" href="info.eliterh@gmail.com">info.eliterh@gmail.com</a>
             </div>
-        </div>	
+        </div>
     </div>
 </div>
 <!-- Header Area Starts -->
@@ -32,17 +30,20 @@
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>  
+                </div>
                 <div class="main-menu">
                     <ul>
-                        <li routerLinkActive="active"><a routerLink="/sign_in" href="#">accueil</a></li>
-                        <li routerLinkActive="active"><a routerLink="/about" href="#">A propos de nous</a></li>
-                        <li routerLinkActive="active"><a routerLink="/services" href="#">Nos services</a></li>
-                        <li routerLinkActive="active"><a routerLink="/job" href="#">Offres d'emploi</a></li>
-                        <li routerLinkActive="active"><a routerLink="/contact" href="#">contact</a></li>
-                        <li class="menu-btn">
-                            <a (click)="login()" class="login">Se connecter</a>
-                            <a (click)="signin()" class="login">S'inscrire</a>
+                        <li><a [ngClass]="{'main-menu-active': getCurrentLink('/sign_in')}" routerLink="/sign_in" href="#">accueil</a></li>
+                        <li><a [ngClass]="{'main-menu-active': getCurrentLink('/about')}" routerLink="/about" href="#">A propos de nous</a></li>
+                        <li><a [ngClass]="{'main-menu-active': getCurrentLink('/job')}" routerLink="/job" href="#">Offres d'emploi</a></li>
+                        <li><a [ngClass]="{'main-menu-active': getCurrentLink('/contact')}" routerLink="/contact" href="#">contact</a></li>
+                        <li class="menu-btn" *ngIf="!isAuth">
+                            <a (click)="getLogin()" class="login">Se connecter</a>
+                            <a (click)="signup()" class="login">S'inscrire</a>
+                        </li>
+                        <li *ngIf="isAuth"><a [ngClass]="{'main-menu-active': getCurrentLink('/profil')}" routerLink="/profil" href="#">Profil</a></li>
+                        <li class="menu-btn" *ngIf="isAuth">
+                            <a (click)="signout()" class="login">Se déconnecter</a>
                         </li>
                     </ul>
                 </div>
@@ -67,17 +68,20 @@
                         <span></span>
                         <span></span>
                         <span></span>
-                    </div>  
+                    </div>
                     <div class="main-menu main-menu-light">
                         <ul>
-                            <li routerLinkActive="active" class="active"><a routerLink="/sign_in" href="#">accueil</a></li>
-                            <li routerLinkActive="active"><a routerLink="/about" href="#">A propos de nous</a></li>
-                            <li routerLinkActive="active"><a routerLink="/services" href="#">Nos services</a></li>
-                            <li routerLinkActive="active"><a routerLink="/job" href="#">Offres d'emploi</a></li>
-                            <li routerLinkActive="active"><a routerLink="/contact" href="#">contact</a></li>
-                            <li class="menu-btn">
-                                <a (click)="login()" class="login">Se connecter</a>
-                                <a (click)="signin()" class="login">S'inscrire</a>
+                            <li><a [ngClass]="{'main-menu-active': getCurrentLink('/sign_in')}" routerLink="/sign_in" href="#">accueil</a></li>
+                            <li><a [ngClass]="{'main-menu-active': getCurrentLink('/about')}" routerLink="/about" href="#">A propos de nous</a></li>
+                            <li><a [ngClass]="{'main-menu-active': getCurrentLink('/job')}" routerLink="/job" href="#">Offres d'emploi</a></li>
+                            <li><a [ngClass]="{'main-menu-active': getCurrentLink('/contact')}" routerLink="/contact" href="#">contact</a></li>
+                            <li class="menu-btn" *ngIf="!isAuth">
+                                <a (click)="getLogin()" class="login">Se connecter</a>
+                                <a (click)="signup()" class="login">S'inscrire</a>
+                            </li>
+                            <li *ngIf="isAuth"><a [ngClass]="{'main-menu-active': getCurrentLink('/profil')}" routerLink="/profil" href="#">Profil</a></li>
+                            <li class="menu-btn" *ngIf="isAuth">
+                                <a (click)="signout()" class="login">Se déconnecter</a>
                             </li>
                         </ul>
                     </div>
@@ -97,3 +101,63 @@
     </div>
 </header>
 <!-- Header Area End -->
+
+<swal #subscribe title="Créer un compte"   icon="info"  [showConfirmButton]= false>
+    <!-- This form will be displayed as the alert main content
+         Targets the alert's main content zone by default -->
+        <form *swalPortal [formGroup]="register"  (ngSubmit)="createUser(register.value)">
+            <mat-dialog-content >
+                <!-- Form fields -->
+                <mat-form-field>
+                    <input  matInput  placeholder="Prenom" type="text" formControlName="prenom"  required>
+                </mat-form-field>
+                <mat-form-field>
+                    <input  matInput  placeholder="Nom" type="text" formControlName="nom"  required>
+                </mat-form-field>
+                <mat-form-field>
+                    <input  matInput  placeholder="Adresse email" type="email" formControlName="email"  required>
+                </mat-form-field>
+                <mat-form-field>
+                    <input  matInput  placeholder="Téléphone" type="tel" formControlName="tel"  required>
+                </mat-form-field>
+                <mat-form-field>
+                    <input  matInput  placeholder="Mot de passe" type="password"  formControlName="password"  required>
+                </mat-form-field>
+                <mat-form-field>
+                    <input  matInput (click)="clearInput()"  placeholder="Confirmation mot de passe"  type="password"  formControlName="password_confirm"  required>
+                    <span class="dark_error" *ngIf='errorMessage'>{{errorMessage}}</span>
+                </mat-form-field>
+                <mat-form-field>
+                    <input  matInput  placeholder="Date de naissance" type="date" formControlName="date_naissance"  required>
+                </mat-form-field>
+            </mat-dialog-content>
+            <mat-dialog-actions>
+                <button [disabled]="register.invalid" class="mat-raised-button mat-primary" type="submit">Créer</button>
+            </mat-dialog-actions>
+        </form>
+        <ng-container *swalPortal="swalTargets.cancelButton">
+            Fermer
+        </ng-container>
+</swal>
+
+  <swal #signin title="Se connecter"   icon="info"  [showConfirmButton]= false>
+    <!-- This form will be displayed as the alert main content
+         Targets the alert's main content zone by default -->
+        <form *swalPortal [formGroup]="login"  (ngSubmit)="onLogin(login.value)">
+            <mat-dialog-content >
+                <!-- Form fields -->
+                <mat-form-field>
+                    <input  matInput  placeholder="Adresse email" type="email" formControlName="email"  required>
+                </mat-form-field>
+                <mat-form-field>
+                    <input  matInput  placeholder="Mot de passe" type="password"  formControlName="password"  required>
+                </mat-form-field>
+            </mat-dialog-content>
+            <mat-dialog-actions>
+                <button [disabled]="login.invalid" class="mat-raised-button mat-primary" type="submit">Se connecter</button>
+            </mat-dialog-actions>
+        </form>
+        <ng-container *swalPortal="swalTargets.cancelButton">
+            Fermer
+        </ng-container>
+  </swal>

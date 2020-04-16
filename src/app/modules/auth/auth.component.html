@@ -1,341 +1,349 @@
-<app-header></app-header>
-<!-- Banner Area Starts -->
-<section class="banner-area">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6 px-0">
-                <div class="banner-bg">
-                    <ngb-carousel 
-                    [showNavigationArrows]="true" 
-                    [showNavigationIndicators]="false"
-                    interval="3000"
-                    [keyboard]="true"
-                    [pauseOnHover]="true"
-                    [wrap]="true"
-                    [activeId]="'secondSlide'"
-                    >
-                        <ng-template ngbSlide>
-                          <div class="picsum-img-wrapper">
-                            <img src="../../../assets/images/slider1.jpg" alt="Angular Carousel 1">
-                          </div>
-                          <div class="carousel-caption">
-                            <h3>Title Goes Here</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                          </div>
-                        </ng-template>
-                        <ng-template ngbSlide>
-                          <div class="picsum-img-wrapper">
-                            <img src="../../../assets/images/slider5.jpg" alt="Angular Carousel 1">
-                          </div>
-                          <div class="carousel-caption">
-                            <h3>Title Goes Here</h3>
-                            <p>Consectetur tortor volutpat pretium.</p>
-                          </div>
-                        </ng-template>
-                        <ng-template ngbSlide>
+<ng-container *ngIf="!loading">
+  <app-header></app-header>
+  <!-- Banner Area Starts -->
+  <section class="banner-area">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-lg-12 px-0">
+                  <div class="banner-bg">
+                      <ngb-carousel
+                      [showNavigationArrows]="true"
+                      [showNavigationIndicators]="false"
+                      interval="3000"
+                      [keyboard]="true"
+                      [pauseOnHover]="true"
+                      [wrap]="true"
+                      [activeId]="'secondSlide'"
+                      >
+                          <ng-template ngbSlide>
                             <div class="picsum-img-wrapper">
-                              <img src="../../../assets/images/slider4.jpg" alt="Angular Carousel 1">
+                              <img src="../../../assets/images/slider/shutterstock_1452595280.jpg" alt="Angular Carousel 1">
+                            </div>
+                            <div class="carousel-caption">
+                              <h3>Title Goes Here</h3>
+                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                          </ng-template>
+                          <ng-template ngbSlide>
+                            <div class="picsum-img-wrapper">
+                              <img src="../../../assets/images/slider/shutterstock_126952145.jpg" alt="Angular Carousel 1">
+                            </div>
+                            <div class="carousel-caption">
+                              <h3>Title Goes Here</h3>
+                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                          </ng-template>
+                          <ng-template ngbSlide>
+                            <div class="picsum-img-wrapper">
+                              <img src="../../../assets/images/slider/shutterstock_1460083661.jpg" alt="Angular Carousel 1">
                             </div>
                             <div class="carousel-caption">
                               <h3>Title Goes Here</h3>
                               <p>Consectetur tortor volutpat pretium.</p>
                             </div>
-                        </ng-template>
-                      </ngb-carousel>
-                </div>
-            </div>
-            <div class="col-lg-6 align-self-center">
-                <div class="banner-text">
-                    <h1>Trouvez le <span>job</span> de vos rêves avec elite RH</h1>
-                    <p class="py-3">Wherein herb beginning. Moved after gathering. Sea hi crate fowl man replenish place divided likeness herb one two lnetn Winged moving saw, may over.</p>
-                    <a href="#" class="secondary-btn">explore now<span class="flaticon-next"></span></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Banner Area End -->
+                          </ng-template>
+                          <ng-template ngbSlide>
+                              <div class="picsum-img-wrapper">
+                                <img src="../../../assets/images/slider/shutterstock_206010238.jpg" alt="Angular Carousel 1">
+                              </div>
+                              <div class="carousel-caption">
+                                <h3>Title Goes Here</h3>
+                                <p>Consectetur tortor volutpat pretium.</p>
+                              </div>
+                          </ng-template>
+                        </ngb-carousel>
+                  </div>
+              </div>
+              <!--
+              <div class="col-lg-6 align-self-center">
+                  <div class="banner-text">
+                      <h1>Trouvez le <span>job</span> de vos rêves avec elite RH</h1>
+                      <p class="py-3">Wherein herb beginning. Moved after gathering. Sea hi crate fowl man replenish place divided likeness herb one two lnetn Winged moving saw, may over.</p>
+                      <a href="#" class="secondary-btn">explore now<span class="flaticon-next"></span></a>
+                  </div>
+              </div>
+              -->
+              <div class="col-lg-4 align-self-center">
+                 <div class="opacity-header">
+                  <p class="py-3">Wherein herb beginning. Moved after gathering. Sea hi crate fowl man replenish place divided likeness herb one two lnetn Winged moving saw, may over.</p>
+                  <a href="#" class=" btn secondary-btn">explore now<span class="flaticon-next"></span></a>
+                 </div>
+              </div>
 
-<!-- Search Area Starts -->
-<div class="search-area">
-    <div class="search-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <form class="d-md-flex justify-content-between">
-                        <select>
-                            <option value="1">Toutes les catégories</option>
-                            <option value="2">Temps partiel</option>
-                            <option value="3">Temps plein</option>
-                            <option value="5">Travail de bureau</option>
-                            <option value="4">Travail à distance</option>
-                        </select>
-                        <select>
-                            <option value="1">Selectionner la région</option>
-                            <option value="2">Dakar</option>
-                            <option value="3">Diourbel</option>
-                            <option value="4">Fatick</option>
-                            <option value="5">Kaffrine</option>
-                            <option value="5">Kaolack</option>
-                            <option value="5">Kédougou</option>
-                            <option value="5">Kolda</option>
-                            <option value="5">Louga</option>
-                            <option value="5">Matam</option>
-                            <option value="5">Saint-Louis</option>
-                            <option value="5">Sédhiou</option>
-                            <option value="5">Tambacounda</option>
-                            <option value="5">Thiès</option>
-                            <option value="5">Ziguinchor</option>
-                        </select>
-                        <input type="text" placeholder="Rechercher" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'" required>
-                        <button type="submit" class="template-btn">Trouvez un job</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Search Area End -->
+              <div class="col-lg-3 align-self-center animate">
+                  <div class="banner-text">
+                      <h1>Avec elith rh, trouvez le <span>job</span> de vos rêves</h1>
+                      <p class="py-3">Bienvenue dans le monde des ressources humaines avec Elite RH, la référence dans le domaine. Chez nous, nos offres sont calibrées et adaptées aux besoins de nos clients et avec comme seul et unique objectif : « Renforcer vos performances en vous offrant les meilleurs profils ».</p>
+                      <a href="#" routerLink="/job" class="btn secondary-btn">Voir les offres d'emploi<span class="flaticon-next"></span></a>
+                  </div>
+              </div>
 
-<!-- Feature Area Starts -->
-<section class="feature-area section-padding2">
+          </div>
+      </div>
+  </section>
+  <!-- Banner Area End -->
+
+  <!-- Search Area Starts -->
+  <div class="search-area">
+      <div class="search-bg">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-12">
+                      <form [formGroup]="searchObject"  (ngSubmit)="search(searchObject.value)" class="d-md-flex justify-content-between">
+                          <select formControlName="type" id="ftype">
+                            <option value="">Type de contrat</option>
+                            <option value="CDI">CDI</option>
+                            <option value="CDD">CDD</option>
+                            <option value="Stage">Stage</option>
+                            <option value="Intérim">Intérim</option>
+                          </select>
+                          <select formControlName="region" id="region">
+                              <option value="">Selectionner la région</option>
+                              <option value="Dakar">Dakar</option>
+                              <option value="Diourbel">Diourbel</option>
+                              <option value="Fatick">Fatick</option>
+                              <option value="Kaffrine">Kaffrine</option>
+                              <option value="Kaolack">Kaolack</option>
+                              <option value="Kédougou">Kédougou</option>
+                              <option value="Kolda">Kolda</option>
+                              <option value="Louga">Louga</option>
+                              <option value="Matam">Matam</option>
+                              <option value="Saint-Louis">Saint-Louis</option>
+                              <option value="Sédhiou">Sédhiou</option>
+                              <option value="Tambacounda">Tambacounda</option>
+                              <option value="Thiès">Thiès</option>
+                              <option value="Ziguinchor">Ziguinchor</option>
+                          </select>
+                          <select formControlName="secteur" id="secteur" required>
+                            <option value="">Secteur du poste recherché</option>
+                            <option value="Bâtiment et travaux publics">Bâtiment et travaux publics</option>
+                            <option value="Immobilier">Immobilier</option>
+                            <option value="Télécommunication">Télécommunication</option>
+                            <option value="Agroalimentaire">Agroalimentaire</option>
+                            <option value="Commerce">Commerce</option>
+                            <option value="Industries Alimentaires">Industries Alimentaires</option>
+                            <option value="Banques et Etablissements Financiers">Banques et Finances</option>
+                            <option value="Hôtellerie">Hôtellerie</option>
+                        </select>
+                          <button type="submit" class="template-btn">Trouvez un job</button>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Search Area End -->
+
+   <!-- Feature Area Starts -->
+   <section class="feature-area section-padding2">
     <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-top text-center">
+                    <h2>Qui sommes-nous?</h2>
+                    <p>Depuis sa création, Elite RH fonde sa réussite sur des principes et valeurs qui font d’elle un des leaders de l’intérim et du recrutement au Sénégal. C’est ainsi que le code de conduite chez nous est basé sur :</p>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-lg-4">
                 <div class="single-feature mb-4 mb-lg-0">
-                    <h4>UX/UI Designer</h4>
-                    <p class="py-3">There spirit beginning bearing the open at own every give appear in third you sawe two boys</p>
-                    <a href="#" class="secondary-btn">explore now<span class="flaticon-next"></span></a>
+                    <h4>L’Intégrité</h4>
+                    <img src="../../../assets/images/about/integrite.png" alt="">
+                    <p class="py-3">Cette valeur illustre nos convictions et notre façon d’accompagner nos clients pour une collaboration...</p>
+                    <span class="bottom-check"><a href="#" routerLink="/about" class="secondary-btn">En savoir plus<span class="flaticon-next"></span></a></span>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="single-feature mb-4 mb-lg-0">
-                    <h4>web Designer</h4>
-                    <p class="py-3">There spirit beginning bearing the open at own every give appear in third you sawe two boys</p>
-                    <a href="#" class="secondary-btn">explore now<span class="flaticon-next"></span></a>
+                    <h4>La Responsabilité</h4>
+                    <img src="../../../assets/images/about/responsabilite.png" alt="">
+                    <p class="py-3">Nous faisons des préoccupations de nos clients les nôtres car la fidélisation de tout partenaire...</p>
+                    <span class="bottom-check"><a href="#" routerLink="/about" class="secondary-btn">En savoir plus<span class="flaticon-next"></span></a></span>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="single-feature">
-                    <h4>Accounting and Finance</h4>
-                    <p class="py-3">There spirit beginning bearing the open at own every give appear in third you sawe two boys</p>
-                    <a href="#" class="secondary-btn">explore now<span class="flaticon-next"></span></a>
-                </div>
+                    <h4>L’efficacité </h4>
+                    <img src="../../../assets/images/about/efficace.png" alt="">
+                    <p class="py-3">• Répondre de manière précise et adaptée aux besoins des clients dans les délais et ce, quel que...</p>
+                      <span class="bottom-check"><a href="#" routerLink="/about" class="secondary-btn">En savoir plus<span class="flaticon-next"></span></a></span>
+                    </div>
             </div>
         </div>
     </div>
 </section>
 <!-- Feature Area End -->
 
-<!-- Category Area Starts -->
-<section class="category-area section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-top text-center">
-                    <h2>Find job by category</h2>
-                    <p>Open lesser winged midst wherein may morning</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="single-category text-center mb-4">
-                    <img src="assets/images/cat1.png" alt="category">
-                    <h4>accounting & Finance</h4>
-                    <h5>250 open job</h5>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="single-category text-center mb-4">
-                    <img src="assets/images/cat2.png" alt="category">
-                    <h4>production & operation</h4>
-                    <h5>250 open job</h5>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="single-category text-center mb-4">
-                    <img src="assets/images/cat3.png" alt="category">
-                    <h4>telecommunication</h4>
-                    <h5>250 open job</h5>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="single-category text-center mb-4">
-                    <img src="assets/images/cat4.png" alt="category">
-                    <h4>garments & textile</h4>
-                    <h5>250 open job</h5>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="single-category text-center mb-4 mb-lg-0">
-                    <img src="assets/images/cat5.png" alt="category">
-                    <h4>marketing and sales</h4>
-                    <h5>250 open job</h5>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="single-category text-center mb-4 mb-lg-0">
-                    <img src="assets/images/cat6.png" alt="category">
-                    <h4>engineer & architech</h4>
-                    <h5>250 open job</h5>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="single-category text-center mb-4 mb-md-0">
-                    <img src="assets/images/cat7.png" alt="category">
-                    <h4>design & crative</h4>
-                    <h5>250 open job</h5>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="single-category text-center">
-                    <img src="assets/images/cat8.png" alt="category">
-                    <h4>customer support</h4>
-                    <h5>250 open job</h5>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Category Area End -->
 
-<!-- Jobs Area Starts -->
-<section class="jobs-area section-padding3">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="jobs-title">
-                    <h2>Browse recent jobs</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="jobs-tab tab-item">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#recent" role="tab" aria-controls="home" aria-selected="true">recent</a>
+
+  <!-- Category Area Starts -->
+  <section class="category-area section-padding">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="section-top text-center">
+                      <h2>Trouver un emploi par secteur</h2>
+                      <p>Choisir un secteur d'emplois pour accéder à la liste des postes correspondants</p>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-3 col-md-6"  (click)="searchSecteur(secteur.nom)" *ngFor="let secteur of secteurs; let i = index">
+                  <div class="single-category category-job text-center mb-4">
+                      <img src="assets/images/categories/{{secteur.img}}" alt="category">
+                      <h4>{{secteur.nom}}</h4>
+                      <h5>{{getPostStat(secteur.nom)}}  job</h5>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- Category Area End -->
+
+  <!-- Jobs Area Starts -->
+  <section class="jobs-area section-padding3">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="jobs-title">
+                      <h2>Parcourir les emplois récents</h2>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="jobs-tab tab-item">
+                      <ul class="nav nav-tabs" id="myTab" role="tablist">
+                          <li class="nav-item li-active">
+                              <a class="nav-link" (click)="cheangeCurrenType('', 0)" id="home-tab" data-toggle="tab" href="#recent" role="tab" aria-controls="home" aria-selected="true">récent</a>
+                          </li>
+                          <li class="nav-item li-active">
+                              <a class="nav-link" (click)="cheangeCurrenType('CDI', 1)" id="profile-tab" data-toggle="tab" href="#full-time" role="tab" aria-controls="profile" aria-selected="false">CDI</a>
+                          </li>
+                          <li class="nav-item li-active">
+                              <a class="nav-link" (click)="cheangeCurrenType('CDD', 2)" id="contact-tab" data-toggle="tab" href="#part-time" role="tab" aria-controls="part-time" aria-selected="false">CDD</a>
+                          </li>
+                          <li class="nav-item li-active">
+                            <a class="nav-link" (click)="cheangeCurrenType('Stage', 3)" id="profile-tab" data-toggle="tab" href="#stage" role="tab" aria-controls="profile" aria-selected="false">Stage</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#full-time" role="tab" aria-controls="profile" aria-selected="false">full time</a>
+                        <li class="nav-item li-active">
+                            <a class="nav-link" (click)="cheangeCurrenType('Intérim', 4)" id="contact-tab" data-toggle="tab" href="#interim" role="tab" aria-controls="part-time" aria-selected="false">Intérim</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#part-time" role="tab" aria-controls="part-time" aria-selected="false">part time</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="contact-tab2" data-toggle="tab" href="#intern" role="tab" aria-controls="intern" aria-selected="false">intern</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="recent" role="tabpanel" aria-labelledby="home-tab">
-                        <div class="single-job mb-4 d-lg-flex justify-content-between">
-                            <div class="job-text">
-                                <h4>Assistant Executive - Production/ Quality Control</h4>
-                                <ul class="mt-4">
-                                    <li class="mb-3"><h5><i class="fa fa-map-marker"></i> new yourk, USA</h5></li>
-                                    <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> Applied Chemistry & Chemical Engineering / Chemistry</h5></li>
-                                    <li><h5><i class="fa fa-clock-o"></i> Deadline Deadline: Dec 11, 2018</h5></li>
-                                </ul>
-                            </div>
-                            <div class="job-img align-self-center">
-                                <img src="assets/images/job1.png" alt="job">
-                            </div>
-                            <div class="job-btn align-self-center">
-                                <a href="#" class="third-btn job-btn1">full time</a>
-                                <a href="#" class="third-btn">apply</a>
-                            </div>
-                        </div>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="tab-content" id="myTabContent">
+                      <div class="tab-pane fade show active" id="recent" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="single-job mb-4 d-lg-flex justify-content-between" (click)="openSingkeJob(post)" *ngFor="let post of posts | possFilterDate | lazyFilter : size; let i = index">
+                          <div class="job-text">
+                              <h4>{{post.titre}}</h4>
+                              <ul class="mt-4">
+                                  <li class="mb-3"><h5><i class="fa fa-map-marker"></i> {{post.lieu}}, Sénégal</h5></li>
+                                  <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> {{post.secteur}}</h5></li>
+                                  <li><h5><i class="fa fa-clock-o"></i> Ajouté le : {{post.date_create}}</h5></li>
+                                  <li><h5><i class="fa fa-clock-o"></i> Expire le : {{post.date_val}}</h5></li>
+                              </ul>
+                          </div>
+                          <div class="job-btn align-self-center">
+                              <a class="forth-btn">{{post.type}}</a>
+                              <!--
+                              <img src="assets/images/job2.png" alt="job">
+                              -->
+                          </div>
                     </div>
-                    <div class="tab-pane fade" id="full-time" role="tabpanel" aria-labelledby="profile-tab">
-                        <div class="single-job mb-4 d-lg-flex justify-content-between">
+                      </div>
+                      <div class="tab-pane fade" id="full-time" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="single-job mb-4 d-lg-flex justify-content-between" (click)="openSingkeJob(post)" *ngFor="let post of posts | possFilterDate | typeJobFilter : currenType | lazyFilter : size; let i = index">
+                          <div class="job-text">
+                              <h4>{{post.titre}}</h4>
+                              <ul class="mt-4">
+                                  <li class="mb-3"><h5><i class="fa fa-map-marker"></i> {{post.lieu}}, Sénégal</h5></li>
+                                  <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> {{post.secteur}}</h5></li>
+                                  <li><h5><i class="fa fa-clock-o"></i> Ajouté le : {{post.date_create}}</h5></li>
+                                  <li><h5><i class="fa fa-clock-o"></i> Expire le : {{post.date_val}}</h5></li>
+                              </ul>
+                          </div>
+                          <div class="job-btn align-self-center">
+                              <a class="forth-btn">{{post.type}}</a>
+                              <!--
+                              <img src="assets/images/job2.png" alt="job">
+                              -->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="part-time" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="single-job mb-4 d-lg-flex justify-content-between" (click)="openSingkeJob(post)" *ngFor="let post of posts | possFilterDate | typeJobFilter : currenType | lazyFilter : size; let i = index">
                             <div class="job-text">
-                                <h4>Asst. Manager, Production (Woven Dyeing)</h4>
+                                <h4>{{post.titre}}</h4>
                                 <ul class="mt-4">
-                                    <li class="mb-3"><h5><i class="fa fa-map-marker"></i> new yourk, USA</h5></li>
-                                    <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> Applied Chemistry & Chemical Engineering / Chemistry</h5></li>
-                                    <li><h5><i class="fa fa-clock-o"></i> Deadline Deadline: Dec 11, 2018</h5></li>
-                                </ul>
-                            </div>
-                            <div class="job-img align-self-center">
+                                    <li class="mb-3"><h5><i class="fa fa-map-marker"></i> {{post.lieu}}, Sénégal</h5></li>
+                                    <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> {{post.secteur}}</h5></li>
+                                    <li><h5><i class="fa fa-clock-o"></i> Ajouté le : {{post.date_create}}</h5></li>
+                                    <li><h5><i class="fa fa-clock-o"></i> Expire le : {{post.date_val}}</h5></li>                                </ul>
+                                </div>
+                            <div class="job-btn align-self-center">
+                                <a class="forth-btn">{{post.type}}</a>
+                                <!--
                                 <img src="assets/images/job2.png" alt="job">
+                                -->
                             </div>
-                            <div class="job-btn align-self-center">
-                                <a href="#" class="third-btn job-btn2">full time</a>
-                                <a href="#" class="third-btn">apply</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="part-time" role="tabpanel" aria-labelledby="contact-tab">
-                        <div class="single-job mb-4 d-lg-flex justify-content-between">
+                          </div>
+                      </div>
+                      <div class="tab-pane fade" id="stage" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="single-job mb-4 d-lg-flex justify-content-between" (click)="openSingkeJob(post)" *ngFor="let post of posts | possFilterDate | typeJobFilter : currenType | lazyFilter : size; let i = index">
                             <div class="job-text">
-                                <h4>Deputy Manager/ Assistant Manager - Footwear</h4>
+                                <h4>{{post.titre}}</h4>
                                 <ul class="mt-4">
-                                    <li class="mb-3"><h5><i class="fa fa-map-marker"></i> new yourk, USA</h5></li>
-                                    <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> Applied Chemistry & Chemical Engineering / Chemistry</h5></li>
-                                    <li><h5><i class="fa fa-clock-o"></i> Deadline Deadline: Dec 11, 2018</h5></li>
+                                    <li class="mb-3"><h5><i class="fa fa-map-marker"></i> {{post.lieu}}, Sénégal</h5></li>
+                                    <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> {{post.secteur}}</h5></li>
+                                    <li><h5><i class="fa fa-clock-o"></i> Ajouté le : {{post.date_create}}</h5></li>
+                                    <li><h5><i class="fa fa-clock-o"></i> Expire le : {{post.date_val}}</h5></li>
                                 </ul>
                             </div>
-                            <div class="job-img align-self-center">
-                                <img src="assets/images/job3.png" alt="job">
-                            </div>
                             <div class="job-btn align-self-center">
-                                <a href="#" class="third-btn job-btn3">full time</a>
-                                <a href="#" class="third-btn">apply</a>
+                                <a class="forth-btn">{{post.type}}</a>
+                                <!--
+                                <img src="assets/images/job2.png" alt="job">
+                                -->
                             </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="intern" role="tabpanel" aria-labelledby="contact-tab2s">
-                        <div class="single-job mb-4 d-lg-flex justify-content-between">
+                          </div>
+                      </div>
+                      <div class="tab-pane fade" id="interim" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="single-job mb-4 d-lg-flex justify-content-between" (click)="openSingkeJob(post)" *ngFor="let post of posts | possFilterDate | typeJobFilter : currenType | lazyFilter : size; let i = index">
                             <div class="job-text">
-                                <h4>R&D Manager (Technical Lab Department)</h4>
+                                <h4>{{post.titre}}</h4>
                                 <ul class="mt-4">
-                                    <li class="mb-3"><h5><i class="fa fa-map-marker"></i> new yourk, USA</h5></li>
-                                    <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> Applied Chemistry & Chemical Engineering / Chemistry</h5></li>
-                                    <li><h5><i class="fa fa-clock-o"></i> Deadline Deadline: Dec 11, 2018</h5></li>
+                                    <li class="mb-3"><h5><i class="fa fa-map-marker"></i> {{post.lieu}}, Sénégal</h5></li>
+                                    <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> {{post.secteur}}</h5></li>
+                                    <li><h5><i class="fa fa-clock-o"></i> Ajouté le : {{post.date_create}}</h5></li>
+                                    <li><h5><i class="fa fa-clock-o"></i> Expire le : {{post.date_val}}</h5></li>
                                 </ul>
                             </div>
-                            <div class="job-img align-self-center">
-                                <img src="assets/images/job4.png" alt="job">
-                            </div>
                             <div class="job-btn align-self-center">
-                                <a href="#" class="third-btn job-btn4">full time</a>
-                                <a href="#" class="third-btn">apply</a>
+                                <a class="forth-btn">{{post.type}}</a>
+                                <!--
+                                <img src="assets/images/job2.png" alt="job">
+                                -->
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="single-job d-lg-flex justify-content-between">
-                    <div class="job-text">
-                        <h4>Manager/ Asst. Manager (Quality Assurance)</h4>
-                        <ul class="mt-4">
-                            <li class="mb-3"><h5><i class="fa fa-map-marker"></i> new yourk, USA</h5></li>
-                            <li class="mb-3"><h5><i class="fa fa-pie-chart"></i> Applied Chemistry & Chemical Engineering / Chemistry</h5></li>
-                            <li><h5><i class="fa fa-clock-o"></i> Deadline Deadline: Dec 11, 2018</h5></li>
-                        </ul>
-                    </div>
-                    <div class="job-img align-self-center">
-                        <img src="assets/images/job5.png" alt="job">
-                    </div>
-                    <div class="job-btn align-self-center">
-                        <a href="#" class="third-btn job-btn2">full time</a>
-                        <a href="#" class="third-btn">apply</a>
-                    </div>
-                </div> -->
-            </div>
-        </div>
-        <div class="more-job-btn mt-5 text-center">
-            <a href="#" class="template-btn">more job post</a>
-        </div>
-    </div>
-</section>
-<!-- Jobs Area End -->
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div  class="more-job-btn mt-5 text-center">
+            <a (click)="getMorePost()" class="template-btn">Voir plus de jobs</a>
+          </div>
+      </div>
+  </section>
+  <!-- Jobs Area End -->
 
-<!-- Download Area End -->
-<app-footer></app-footer>
+  <!-- Download Area End -->
+  <app-footer></app-footer>
+  <app-scroll-top></app-scroll-top>
 
+</ng-container>
+<app-loading-screen *ngIf="loading"></app-loading-screen>

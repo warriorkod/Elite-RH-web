@@ -27,9 +27,7 @@ export class LoginComponent implements OnInit {
 
 
   onLogin(formValue) {
-    console.log(formValue);
     this._apiService.signInUser(formValue);
-
   }
 
   close() {

@@ -6,15 +6,15 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SessionService } from './services';
+import { SessionService, LoadingScreenService } from './services';
 import { SharedModule } from './modules/shared/shared.module';
-import { DataTablesModule } from 'angular-datatables';
+import { AuthGuardService } from './guards/is_admin';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,10 +23,9 @@ import { DataTablesModule } from 'angular-datatables';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    SharedModule,
-    DataTablesModule
+    SharedModule
   ],
-  providers: [SessionService],
+  providers: [SessionService, AuthGuardService, LoadingScreenService],
   bootstrap: [AppComponent],
 
 })

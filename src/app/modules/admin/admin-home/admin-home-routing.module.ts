@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminHomeComponent } from './admin-home.component';
-import { AuthGard } from '../guards/is_authenticated';
 
 
 const routes: Routes = [
@@ -10,6 +9,8 @@ const routes: Routes = [
   { path: 'user_list', component: AdminHomeComponent },
   { path: 'post_list', component: AdminHomeComponent },
   { path: 'post_add', component: AdminHomeComponent },
+  { path: 'candidatures', component: AdminHomeComponent },
+  { path: 'candidaturesByFactory', component: AdminHomeComponent },
   { path: 'single_post/:id', component: AdminHomeComponent }
 
 ];

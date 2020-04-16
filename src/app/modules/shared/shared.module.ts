@@ -12,27 +12,58 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { LoginComponent } from './modals/login/login.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { LocationFilterPipe } from 'src/app/pipes/location-filter.pipe';
+import { LazyFilterPipe } from '../../pipes/lazy-filter.pipe';
+import { TypeJobFilterPipe } from '../../pipes/type-job-filter.pipe';
+import { SecteurFilterPipe } from '../..//pipes/secteur-filter.pipe';
+import { MatSelectModule } from '@angular/material';
+import { LoadingScreenComponent } from './loading-screen/loading-screen/loading-screen.component';
+import { ScrollTopComponent } from './scroll-top/scroll-top.component';
+import { PossFilterDatePipe } from 'src/app/pipes/posts-filter-date.pipe';
+
+
 
 
 const routes: Routes = [];
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, RegisterComponent, LoginComponent],
+  declarations: [HeaderComponent, PossFilterDatePipe, LocationFilterPipe, LazyFilterPipe, TypeJobFilterPipe,
+     SecteurFilterPipe, FooterComponent, RegisterComponent, LoginComponent, LoadingScreenComponent, ScrollTopComponent],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatDialogModule, 
-    MatInputModule, 
-    MatButtonModule, 
+    MatDialogModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
     RouterModule.forChild(routes),
-    NgbModule
+    NgbModule,
+    SweetAlert2Module.forRoot({})
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
-    NgbModule
+    LoadingScreenComponent,
+    ScrollTopComponent,
+    NgbModule,
+    SweetAlert2Module,
+    LocationFilterPipe,
+    LazyFilterPipe,
+    TypeJobFilterPipe,
+    SecteurFilterPipe,
+    PossFilterDatePipe,
+    MatDialogModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    FormsModule
+
   ],
   entryComponents: [RegisterComponent, LoginComponent]
 

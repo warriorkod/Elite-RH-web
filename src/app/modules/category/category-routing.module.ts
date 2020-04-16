@@ -15,9 +15,17 @@ const routes: Routes = [
     component: CategoryComponent
   },
   {
+    path: 'list-job/:type/:region/:secteur',
+    component: CategoryComponent
+  },
+  {
     path: 'single-job',
     component: CategoryComponent
+  },
+  { path: 'single-job/:id',
+    component: CategoryComponent
   }
+
 ];
 
 @NgModule({

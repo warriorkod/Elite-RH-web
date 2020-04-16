@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { PostService } from '../../services/post.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Post } from 'src/app/models/post';
 import { SessionService } from 'src/app/services';
@@ -10,37 +9,46 @@ import { Router } from '@angular/router';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css']
 })
-export class PostComponent implements OnInit {
+export class PostComponent implements OnInit, OnDestroy {
   p = 1;
   postsSubscription: Subscription;
   posts: Post[] = [];
+  postsFirst: Post[] = [];
+  type: string;
+  structure: string;
 
-
-
-  constructor( private _apiservice : SessionService, private router: Router) { }
+  constructor( private apiservice: SessionService, private router: Router) { }
 
   ngOnInit() {
-      this.postsSubscription = this._apiservice.postsSubject.subscribe(
+      this.postsSubscription = this.apiservice.postsSubject.subscribe(
         (posts: Post[]) => {
           this.posts = posts;
-          console.log(this.posts);
+          this.postsFirst = posts;
         }
       );
-      this._apiservice.emitPosts();
+      this.apiservice.emitPosts();
   }
 
-  openPOst(post){
-    this.router.navigate(['/post', 'view', post.id]);
+
+  openPost(post) {
+    const postIndexToView = this.apiservice.getPostIndex(post.id);
+    this.router.navigate(['/admin_home_elith_rh/single_post', postIndexToView]);
   }
- 
+
   onDeleteBook(post: Post) {
-    this._apiservice.removePosts(post);
+    this.apiservice.removePosts(post);
   }
 
-  onViewPost(id: number) {
-    this.router.navigate(['/post', 'view', id]);
+  onTypeChange(newType: string) {
+    this.type = newType;
+    this.p = 1;
   }
-  
+
+  onStructureChange(newStructure) {
+    this.structure = newStructure;
+    this.p = 1;
+  }
+
   ngOnDestroy() {
     this.postsSubscription.unsubscribe();
   }

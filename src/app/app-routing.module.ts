@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuardService } from './guards/is_admin';
 
 
 export const routes: Routes = [
@@ -21,23 +22,23 @@ export const routes: Routes = [
     loadChildren: () => import('./modules/about/about.module').then(mod => mod.AboutModule)
   },
   {
-    path: 'services',
-    loadChildren: () => import('./modules/allservices/allservices.module').then(mod => mod.AllservicesModule)
-  },
-  {
     path: 'job',
     loadChildren: () => import('./modules/category/category.module').then(mod => mod.CategoryModule)
+  },
+  {
+    path: 'profil',
+    loadChildren: () => import('./modules/profil/profil.module').then(mod => mod.ProfilModule)
   },
   {
     path: 'admin_elith_rh',
     loadChildren: () => import('./modules/admin/admin-auth/admin-auth.module').then(mod => mod.AdminAuthModule)
   },
   {
-    path: 'admin_home_elith_rh',
+    path: 'admin_home_elith_rh', canActivate: [AuthGuardService],
     loadChildren: () => import('./modules/admin/admin-home/admin-home.module').then(mod => mod.AdminHomeModule)
   },
   /*
-  {  
+  {
     path: '**',
     redirectTo: '/sign_in',
     pathMatch: 'full'

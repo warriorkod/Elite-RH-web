@@ -8,7 +8,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent implements OnInit, AfterViewInit {
   @ViewChild('mapContainer', {static: false}) gmap: ElementRef;
   map: google.maps.Map;
   lat = 40.730610;
@@ -27,6 +27,7 @@ export class ContactComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private af: AngularFireDatabase) {
     this.createForm();
+    window.scrollTo(0, 0);
   }
 
 
@@ -38,7 +39,7 @@ export class ContactComponent implements OnInit {
   }
 
   mapInitializer() {
-    this.map = new google.maps.Map(this.gmap.nativeElement, 
+    this.map = new google.maps.Map(this.gmap.nativeElement,
     this.mapOptions);
     this.marker.setMap(this.map);
 
@@ -55,7 +56,7 @@ export class ContactComponent implements OnInit {
     });
   }
 
-  
+
   onSubmit() {
     const {name, email, subject, message} = this.form.value;
     const date = Date();
@@ -66,8 +67,8 @@ export class ContactComponent implements OnInit {
       <div>Subject: ${subject}</div>
       <div>Message: ${message}</div>
     `;
-    let formRequest = { name, email, subject, message, date, html };
-    
+    const formRequest = { name, email, subject, message, date, html };
+
     this.af.list('/messages').push(formRequest);
     this.form.reset();
   }

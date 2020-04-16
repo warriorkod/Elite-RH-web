@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SessionService } from 'src/app/services';
 
 @Component({
   selector: 'app-admin-auth',
@@ -8,41 +9,30 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-auth.component.css']
 })
 export class AdminAuthComponent implements OnInit {
+  login : FormGroup;
+  errorMessage: any;
 
-  constructor(private fb: FormBuilder, router: Router) { 
+  constructor( private router: Router, private _apiService: SessionService) { 
     this.createForm();
-    this.router = router
   }
 
-  angForm : FormGroup;
-  email: String;
-  password: String;
-  router: Router;
-
   createForm(){
-    this.angForm = this.fb.group({
-      name: ['', Validators.required]
+    this.login = new FormGroup({
+      email: new FormControl ('', Validators.required),
+      password: new FormControl ('', Validators.required)
     })
   }
 
-  setLogin(form){
-    this.email = form.email;
-    this.password = form.password;
-    console.log(form);
+  onLogin(formValue) {
+    this._apiService.signInUser(formValue).then(
+      () => {
+        this.router.navigate(['/admin_home_elith_rh']);
+      },
+      (error) => {
+        this.errorMessage = error;
+      }
+    );
 
-    if(this.email == "" || this.password == ""){
-      if(this.email == "")
-        console.log("Email vide");
-      if(this.password == "")
-        console.log("Password vide");
-    }
-    else{
-      this.router.navigate(['/admin_home_elith_rh']);
-    }
-  }
-
-  showValue(value){
-    console.log(value);
   }
 
   ngOnInit() {

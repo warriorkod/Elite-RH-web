@@ -5,17 +5,18 @@
             <mat-sidenav mode="side" opened class="sidebar">
               <app-sidebar-admin></app-sidebar-admin>
             </mat-sidenav>
-            <mat-sidenav-content >
+            <mat-sidenav-content>
                 <app-body *ngIf="listUser"></app-body>
-                <app-add-user *ngIf="addUser"></app-add-user>
                 <app-post *ngIf="listPost"></app-post>
                 <app-add-post *ngIf="addPost"></app-add-post>
                 <app-view-single-job *ngIf="singlePost"></app-view-single-job>
-            </mat-sidenav-content >
+                <app-candidatures *ngIf="candidatures"></app-candidatures>
+                <app-candidatures-by-sactory *ngIf="candidaturesByFactory"></app-candidatures-by-sactory>
+            </mat-sidenav-content>
         </mat-sidenav-container>
     </div>
-    
-</div> 
+
+</div>
 <app-footer-admin></app-footer-admin>
 
 

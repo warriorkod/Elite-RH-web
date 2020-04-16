@@ -20,30 +20,31 @@
                             </div>
                         </div>
                         <div class="single-content2 py-4">
-                            <h4>Fiche de poste</h4>
-                            <p>
-                                {{post.fiche}}
-                            </p>
+                            <h3 class="contain-title">Mission et responsabilité</h3>
+                            <div [innerHTML]="post.fiche" class="contain-info">
+                            </div>
                         </div>
                         <div class="single-content3 py-4">
-                            <h4>Catégorie du poste</h4>
-                            <span class="ml-4">{{post.categorie}}</span>
+                            <h3 class="contain-title">Catégorie du poste</h3>
+                            <div class="contain-info">{{post.categorie}}</div>
                         </div>
                         <div class="single-content3 py-4">
-                            <h4>Secteur</h4>
-                            <span class="ml-4">{{post.secteur}}</span>
+                            <h3 class="contain-title">Secteur</h3>
+                            <div class="contain-info">{{post.secteur}}</div>
                         </div>
                         <div class="single-content4 py-4">
-                            <h4>Compétences réquises</h4>
-                            <p>
-                                {{post.competences}}
-                            </p>
+                            <h3 class="contain-title">Compétences réquises</h3>
+                            <div class="competences-list  contain-info">
+                                <ul id="competences-item">
+                                  <li  *ngFor="let competence of post.competences"> {{competence}} </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-12" *ngIf="!show">
                     <div class="main-content">
-                        <form class="form-style-9" [formGroup]="addForm" (ngSubmit)="addPost(addForm.value)">
+                        <form (keydown.enter)="$event.preventDefault()" class="form-style-9" [formGroup]="addForm" (ngSubmit)="addPost(addForm.value)">
                             <span class="titre">Modifier l'offre d'emploi</span>
                             <ul>
                               <li>
@@ -69,16 +70,16 @@
                               <li>
                                   <select formControlName="type" id="ftype"  class="field-style field-split align-left" required>
                                     <option value="">Type de contrat</option>
-                                    <option value="Temps partiel">Temps partiel</option>
-                                    <option value="Temps plein">Temps plein</option>
-                                    <option value="Travail de bureau">Travail de bureau</option>
-                                    <option value="Travail à distance">Travail à distance</option>
+                                    <option value="CDI">CDI</option>
+                                    <option value="CDD">CDD</option>
+                                    <option value="Stage">Stage</option>
+                                    <option value="Intérim">Intérim</option>
                                   </select>
                                   <select formControlName="categorie" id="fcategorie"  class="field-style field-split align-right" required>
                                     <option value="">Catégorie poste</option>
                                     <option value="Cadre">Cadre</option>
                                     <option value="Non cadre">Non cadre</option>
-                                  </select> 
+                                  </select>
                               </li>
                               <li>
                                 <select formControlName="secteur" id="fsecteur"  class="field-style field-full align-none" required>
@@ -91,24 +92,49 @@
                                   <option value="Industries Alimentaires">Industries Alimentaires</option>
                                   <option value="Banques et Etablissements Financiers">Banques et Etablissements Financiers</option>
                                   <option value="Hôtellerie">Hôtellerie</option>
-                          
-                                </select> 
+
+                                </select>
                               </li>
                               <li>
                                 <!--
                                 <input type="date" name="date_val" ngModel #date_val="ngModel" id="fdate_val" class="field-style field-full align-none" placeholder="Date de validation" required/>
                                 -->
                                 <input type="text" formControlName="structure_name" id="fstructure_name" class="field-style field-split align-left" placeholder="Nom de la structure" required />
-                                <input type="date" formControlName="date_val" [min]="minDate" id="fdate_val" class="field-style field-split align-right" placeholder="Date de validation" required/>
+                                <input type="date" [min]="minDate" formControlName="date_val" id="fdate_val" class="field-style field-split align-right" placeholder="Date de validation" required/>
                               </li>
                               <li>
-                                <textarea formControlName="fiche" id="ffiche" class="field-style" placeholder="Fiche de poste" required></textarea>
+                                <input type="text" (keyup.enter)="addCompetences(fcompetences.value)" #fcompetences class="field-style field-full align-none" placeholder="Compétences" />
+                              </li>
+                              <div class="competences-container" *ngIf="competences.length !== 0">
+                                <ul id="competences-list">
+                                  <li  *ngFor="let competence of competences"> {{competence}} <i (click)="deleteCompetence(competence)" class="fa fa-times-circle"></i> </li>
+                                </ul>
+                              </div>
+                              <li>
+                                <editor formControlName="fiche" id="ffiche" class="field-style"
+                                  initialValue="<p>Initial content of the editor</p>"
+                                  apiKey="ubn6d83k8mdxng9hvsvhrxzr018cdnzmqxt6vf4mh7vil0ie"
+                                  [init]="{
+                                    height: 500,
+                                    menubar: false,
+                                    plugins: [
+                                      'advlist autolink lists link image charmap print',
+                                      'preview anchor searchreplace visualblocks code',
+                                      'fullscreen insertdatetime media table paste',
+                                      'help wordcount'
+                                    ],
+                                    toolbar:
+                                      'undo redo | formatselect | bold italic | \
+                                      alignleft aligncenter alignright alignjustify | \
+                                      bullist numlist outdent indent | help'
+                                  }"
+                                required >
+                                </editor>
+
+
                               </li>
                               <li>
-                                <textarea formControlName="competences" id="fcompetences" class="field-style" placeholder="Compétences" required></textarea>
-                              </li>
-                              <li>
-                                <input type="submit" value="Enregistrer l'offre d'emploi" />
+                                <button [disabled]="addForm.invalid" type="submit" value="" >Enregistrer l'offre d'emploi</button>
                                 <input type="button" (click)="getBack()" class="align-right" value="Retour"/>
                               </li>
                             </ul>

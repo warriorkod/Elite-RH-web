@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600");
 body {
-	color: #777;
+	color: #35a087;
 	font-family: "Open Sans", sans-serif;
-	font-weight: 400
+  font-weight: 400;
 }
 
 h1 {
-	color: #222;
+	color: #1a393b;
 	text-transform: uppercase;
 	font-family: "Poppins", sans-serif;
 	font-size: 50px;
@@ -15,14 +15,14 @@ h1 {
 }
 
 h2 {
-	color: #222;
+	color: #1a393b;
 	font-family: "Poppins", sans-serif;
 	font-size: 36px;
 	font-weight: 600
 }
 
 h3 {
-	color: #222;
+	color: #1a393b;
 	text-transform: capitalize;
 	font-family: "Poppins", sans-serif;
 	font-size: 20px;
@@ -30,7 +30,7 @@ h3 {
 }
 
 h4 {
-	color: #222;
+	color: #1a393b;
 	font-family: "Poppins", sans-serif;
 	text-transform: capitalize;
 	font-size: 18px;
@@ -38,7 +38,7 @@ h4 {
 }
 
 h5 {
-	color: #777;
+	color: #35a087;
 	font-family: "Open Sans", sans-serif;
 	text-transform: capitalize;
 	font-size: 16px;
@@ -46,7 +46,7 @@ h5 {
 }
 
 h6 {
-	color: #777;
+	color: #1a393b;
 	font-family: "Open Sans", sans-serif;
 	text-transform: uppercase;
 	font-size: 14px;
@@ -127,7 +127,7 @@ textarea:focus {
 }
 
 .main-menu ul {
-	float: right
+  float: right;
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -196,7 +196,7 @@ textarea:focus {
 }
 
 .main-menu ul li a {
-	color: #222;
+	color: #1a393b;
 	font-family: "Open Sans", sans-serif;
 	text-transform: uppercase;
 	font-size: 14px;
@@ -205,12 +205,23 @@ textarea:focus {
 	padding: 15px
 }
 
+
+.main-menu ul li a:hover{
+  color: #35a087;
+  font-size: 12px;
+  font-weight: 700;
+  bottom: 1px;
+  border-width: 0 0 2px;
+  border-style: solid;
+}
+
+
 .main-menu ul li:hover ul.sub-menu {
 	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
 	opacity: 1;
 	visibility: visible;
 	top: 100%;
-	left: 30px
+  left: 30px;
 }
 
 .main-menu ul li ul.sub-menu {
@@ -460,7 +471,7 @@ textarea:focus {
 .search-bg {
 	margin-top: -50px;
 	position: relative;
-	z-index: 1
+	z-index: 20
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -489,13 +500,18 @@ textarea:focus {
 .search-bg form input, form select {
 	width: 280px;
 	display: inline-block;
-	border: none;
+  border: none;
+  color: #1a393b;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	-ms-border-radius: 5px;
 	-o-border-radius: 5px;
 	border-radius: 5px;
 	padding: 0 20px
+}
+
+.search-bg form form select:hover {
+  color: #35a087;
 }
 
 @media (min-width: 992px) and (max-width: 1199.98px) {
@@ -533,7 +549,7 @@ textarea:focus {
 }
 
 .search-bg form .template-btn:hover {
-	color: #222 !important;
+	color: #35a087 !important;
 	background: #f9f9f9
 }
 
@@ -694,7 +710,7 @@ textarea:focus {
 }
 
 .jobs-tab .active {
-	color: #ff9902
+	color: #1a393b
 }
 
 .jobs-tab .active:after {
@@ -843,7 +859,7 @@ textarea:focus {
 
 .nav-tabs .nav-item.show .nav-link,
 .nav-tabs .nav-link.active {
-	color: #ff9902
+	color: #1a393b
 }
 
 .nav-tabs .nav-link {
@@ -853,7 +869,7 @@ textarea:focus {
 }
 
 .nav-link {
-	color: #222;
+	color: #35a087;
 	display: block;
 	padding: 0
 }
@@ -1269,6 +1285,7 @@ textarea:focus {
 	z-index: 1
 }
 
+
 .header-area.single-page:after {
 	content: '';
 	position: absolute;
@@ -1573,7 +1590,7 @@ textarea:focus {
 }
 
 .top_menu .header_social li:hover a {
-	color: #ff9902
+	color: #1a393b
 }
 
 .top_menu .dn_btn {
@@ -3631,6 +3648,10 @@ form .template-btn {
 	border: 1px solid transparent
 }
 
+.section-padding-profil {
+	padding: 30px 0
+}
+
 .section-padding {
 	padding: 140px 0
 }
@@ -3646,7 +3667,10 @@ form .template-btn {
 .section-padding4 {
 	padding: 5px 0
 }
-
+.section-padding5{
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
 .section-top {
 	margin-bottom: 80px
 }
@@ -3671,4 +3695,27 @@ form .template-btn {
 
 .tab-item li:hover {
 	color: #ff9902
+}
+
+.cdk-global-overlay-wrapper, .cdk-overlay-container { z-index: 9999!important; }
+
+
+.carousel-control-prev {
+  z-index: 20;
+  display: none;
+}
+
+
+.carousel-control-next-icon {
+  z-index: 20;
+  color: #1a393b;
+  height: 200px;
+}
+
+preferenceText1{
+  color: #35a087;
+}
+
+preferenceText2{
+  color: #1a393b;
 }

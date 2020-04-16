@@ -1,19 +1,23 @@
-<div class="container">
+<div class="container-users">
       <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>First name</th>
-            <th>Last name</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Tel</th>
+            <th>Date de naissance</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let user of users">
-            <td>{{ user.id }}</td>
-            <td>{{ user.nom }}</td>
-            <td>{{ user.prenom }}</td>
-            <td class="td-btn"><button mat-raised-button (click)="onClick(user)" class="btn" [ngClass]="[checkStatus(user)]"> {{ user.state }}</button></td>
+          <tr *ngFor="let item of users">
+            <td>{{ item.nom }}</td>
+            <td>{{ item.prenom }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.tel }}</td>
+            <td>{{ item.date_naissance }}</td>
+            <td><button mat-raised-button (click)="onClick(item)" class="btn" [ngClass]="[checkStatus(item)]"> <span *ngIf="item.active">Désactiver</span> <span *ngIf="!item.active">Activer</span></button></td>
           </tr>
         </tbody>
       </table>

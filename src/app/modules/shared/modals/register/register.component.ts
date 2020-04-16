@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
       nom: new FormControl('', Validators.required),
       prenom: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
+      tel: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
       password_confirm: new FormControl('', Validators.required),
       date_naissance: new FormControl('', Validators.required)
@@ -31,7 +32,6 @@ export class RegisterComponent implements OnInit {
   }
 
   createUser(formValue) {
-    console.log(formValue);
     this._apiService.createNewUser(formValue);
 
   }

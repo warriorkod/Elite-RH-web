@@ -7,9 +7,10 @@ import { Router, RouterEvent, NavigationEnd } from '@angular/router';
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
-  show: boolean = true;
+  show = true;
+  loading = true;
 
-  constructor(private router: Router) { 
+  constructor(private router: Router) {
     router.events.subscribe((event: RouterEvent) => {
       this.navigationInterceptor(event);
     });
@@ -17,15 +18,27 @@ export class CategoryComponent implements OnInit {
 
   navigationInterceptor(event: RouterEvent) {
     if (event instanceof NavigationEnd) {
-      if (event.url.includes('/list-job')){
+      if (event.url.includes('/list-job')) {
           this.show = true;
-      }else if (event.url.includes('/single-job')){
+      } else if (event.url.includes('/single-job')) {
         this.show = false;
       }
     }
   }
 
   ngOnInit() {
+  }
+
+  setListLoader(event) {
+    setInterval(() => {
+      this.loading = event;
+    }, 1000);
+  }
+
+  setSingleLoader(event) {
+    setInterval(() => {
+      this.loading = event;
+    }, 1000);
   }
 
 }

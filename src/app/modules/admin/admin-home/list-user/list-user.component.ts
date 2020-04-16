@@ -1,87 +1,82 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { UserService } from '../../services/user.service';
+import { SessionService } from 'src/app/services';
+import { User } from '../../../../models/user';
+import { Subscription, Subject } from 'rxjs';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-body',
   templateUrl: './list-user.component.html',
   styleUrls: ['./list-user.component.css']
 })
-export class BodyComponent implements OnInit {
+export class BodyComponent implements OnInit, OnDestroy {
 
-  dtOptions: DataTables.Settings={};
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
 
-  users = [
-  ];
+  usersSubscription: Subscription;
+  users: User[] = [];
 
-  action: String = "Inactif";
-  btnStyle : String = "btn-inactif";
+  action = 'Inactif';
+  btnStyle = 'btn-inactif';
 
-  constructor( public dialog : MatDialog, private _userService : UserService) {}
+  constructor( public dialog: MatDialog, private route: Router, private apiservice: SessionService) {}
 
   ngOnInit() {
-    this.users = this._userService.getUsers();
-    console.log(this.users);
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
       retrieve: false,
       paging: true,
-      info: false
+      info: true
     };
-  }
-
-  onClick(user){
-      console.log(user);
-      if(confirm("Voulez vous vraiment modifier le state du user ?")){
-        if(user.status){
-          console.log("user status before "+user.status);
-          user.status=false
-        }
-        else{
-          console.log("user status before "+user.status);
-          user.status=true
-        }
+    this.usersSubscription = this.apiservice.usersSubject.subscribe(
+      (users: User[]) => {
+        this.users = users.filter(user => user.isAdmin !== true);
+        this.dtTrigger.next();
       }
-      // let dialogRef = this.dialog.open(DialogComponent);
-
-      // dialogRef.afterClosed().subscribe(result =>{
-      //   console.log(result);
-        // if(result){
-        //   console.log("Result yes = "+result)
-        // //   if(user.status){
-        // //     console.log("user status before "+user.status);
-        // //     user.status=false
-        // // //     console.log("user status after "+user.status);
-        // //   }
-        // //   else{
-        // //     console.log("user status before "+user.status);
-        // //     user.status=true
-        // // //     console.log("user status after "+user.status);
-        // //   }
-        // }
-        // else{
-        //   console.log("Result no = "+result)
-        // }
-      // });
-
-      // if(user.status){
-      //   user.status = false
-      // }
-      // else{
-      //   user.status=true
-      // }
+    );
+    this.apiservice.emitUsers();
   }
 
-  checkStatus(user) : String{
-    if(user.status){
-      user.state = "Active"
-      return "btn-actif"
-    }
-    else{
-      user.state = "Desactive"
-      return "btn-inactif"
+  onClick(user) {
+    Swal.fire({
+      title: 'Voulez-vous vraiment modifier le statut de cet utilisateur?',
+      text: 'L\'utilisateur ne pourra plus s\'authentifier!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Oui, modifier!'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Modifié!',
+          'L\'utilisateur  a été modifié avec succès.',
+          'success'
+        );
+        user.active = user.active ? false : true;
+        this.dtTrigger.unsubscribe();
+        this.apiservice.updateUser(user);
+      }
+    });
+  }
+
+  checkStatus(user): string {
+    if (user.active) {
+      return 'btn-actif';
+    } else {
+      return 'btn-inactif';
     }
   }
+
+  ngOnDestroy(): void {
+    this.usersSubscription.unsubscribe();
+    this.dtTrigger.unsubscribe();
+  }
+
 
 }

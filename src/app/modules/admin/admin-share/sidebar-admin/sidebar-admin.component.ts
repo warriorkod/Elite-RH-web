@@ -7,10 +7,10 @@ import { Router, RouterEvent, NavigationEnd } from '@angular/router';
   styleUrls: ['./sidebar-admin.component.css']
 })
 export class SidebarAdminComponent implements OnInit {
-  links = document.getElementsByClassName("btn-link");
-  
+  links = document.getElementsByClassName('btn-link');
 
-  constructor(private router : Router) { 
+
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
@@ -21,9 +21,9 @@ export class SidebarAdminComponent implements OnInit {
 
   navigationInterceptor(event: RouterEvent): void {
     if (event instanceof NavigationEnd) {
-      this.links[1].classList.remove("active");
-      if (event.url.includes('/single_post/')){
-        this.links[1].classList.toggle("active");
+      this.links[1].classList.remove('active');
+      if (event.url.includes('/single_post/')) {
+        this.links[1].classList.toggle('active');
       }
     }
   }

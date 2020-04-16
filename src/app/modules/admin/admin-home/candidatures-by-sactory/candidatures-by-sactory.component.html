@@ -1,0 +1,20 @@
+<div class="container-users">
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom structure</th>
+        <th>Titre</th>
+        <th>Secteur</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of users" (click)="open(item)">
+        <td>{{ item.id }}</td>
+        <td>{{ item.structure_name }}</td>
+        <td>{{ item.Title }}</td>
+        <td>{{ item.secteur }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
